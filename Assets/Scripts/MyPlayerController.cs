@@ -21,6 +21,10 @@ public class MyPlayerController : MonoBehaviour
     private Vector3 moveVector;
 
     private Player player; // The Rewired Player
+
+    Animator animator;
+
+    Rigidbody rb;
     
 
 
@@ -29,6 +33,9 @@ public class MyPlayerController : MonoBehaviour
         Debug.Log("awaking player");
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
         player = ReInput.players.GetPlayer(playerId);
+
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -38,6 +45,7 @@ public class MyPlayerController : MonoBehaviour
         
         GetInput();
         ProcessInput();
+        SetAnimatorValues();
         
     }
 
@@ -55,10 +63,29 @@ public class MyPlayerController : MonoBehaviour
 
         // receive button inputs
         jump = player.GetButtonDown("Jump");
-        taunt = player.GetButtonDown("Jump");
-        fire = player.GetButtonDown("Jump");
+        
+        fire = player.GetButtonDown("Fire");
 
         
+        taunt = player.GetButtonDown("Taunt");
+        
+
+        
+    }
+
+    void SetAnimatorValues()
+    {
+        animator.SetFloat("vy", rb.velocity.z);
+
+
+        if (!animator.GetBool("isTaunting")) {
+            animator.SetBool("isTaunting", taunt);
+        }
+        
+
+        
+
+
     }
 
     private void ProcessInput() 
@@ -85,6 +112,9 @@ public class MyPlayerController : MonoBehaviour
         }
 
         // Process Taunting
+        if(taunt) {
+            Debug.Log("taunted");
+        }
 
     }
 
