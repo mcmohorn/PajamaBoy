@@ -14,6 +14,9 @@ public class MyPlayerController : MonoBehaviour
 
     private bool jump;
 
+    private int numJumps;
+    public int maxJumps;
+
     private bool fire;
 
     private bool taunt;
@@ -36,6 +39,7 @@ public class MyPlayerController : MonoBehaviour
 
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        numJumps = maxJumps;
     }
 
 
@@ -58,8 +62,8 @@ public class MyPlayerController : MonoBehaviour
     void GetInput()
     {
         // receive movement input
-        moveVector.x = player.GetAxis("Move Horizontal"); // get input by name or action id
-        moveVector.y = player.GetAxis("Move Vertical");
+        moveVector.x = player.GetAxis("MoveHorizontal"); // get input by name or action id
+        moveVector.z = player.GetAxis("MoveVertical");
 
         // receive button inputs
         jump = player.GetButtonDown("Jump");
@@ -73,30 +77,44 @@ public class MyPlayerController : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision other) 
+    {
+        
+        if (other.gameObject.GetComponent<Surface>()) {
+            Debug.Log("Landed on  " + other.gameObject.name);
+            numJumps = maxJumps;
+
+        }
+
+    }
+
     void SetAnimatorValues()
     {
-        animator.SetFloat("vy", rb.velocity.z);
+        if (numJumps < maxJumps) {
+            animator.SetBool("isJumping", true);
+        } else {
+           animator.SetBool("isJumping", false); 
+        }
 
 
         if (!animator.GetBool("isTaunting")) {
             animator.SetBool("isTaunting", taunt);
         }
-        
 
-        
-
+        if(moveVector.x != 0.0f || moveVector.z != 0.0f) {
+            animator.SetBool("isMoving", true);
+        } else {
+            animator.SetBool("isMoving", false);
+        }
 
     }
 
-    private void ProcessInput() 
+    private void ProcessInput()
     {
         // Process movement
-        if(moveVector.x != 0.0f || moveVector.y != 0.0f) {
-            Debug.Log("moving player");
+        if(moveVector.x != 0.0f || moveVector.z != 0.0f) {
             GetComponent<Rigidbody>().AddForce(moveVector * speed);
-
-            // handle rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), Time.deltaTime * 40f);
+            transform.LookAt(transform.position + moveVector);
         }
 
         // Process firing
@@ -107,8 +125,11 @@ public class MyPlayerController : MonoBehaviour
 
         // Process Jumping
         if(jump) {
-            Debug.Log("jumped");
-            GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            if (numJumps > 0) {
+                GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+                numJumps--;
+            }
+            
         }
 
         // Process Taunting
