@@ -19,6 +19,8 @@ public class MyPlayerController : MonoBehaviour
 
     private bool fire;
 
+    private bool midair;
+
     private bool taunt;
 
     private Vector3 moveVector;
@@ -32,6 +34,7 @@ public class MyPlayerController : MonoBehaviour
 
 
 
+
     void Awake() {
         Debug.Log("awaking player");
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
@@ -40,6 +43,7 @@ public class MyPlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         numJumps = maxJumps;
+        midair = true;
     }
 
 
@@ -82,6 +86,7 @@ public class MyPlayerController : MonoBehaviour
         
         if (other.gameObject.GetComponent<Surface>()) {
             Debug.Log("Landed on  " + other.gameObject.name);
+            midair = false;
             numJumps = maxJumps;
 
         }
@@ -107,6 +112,8 @@ public class MyPlayerController : MonoBehaviour
             animator.SetBool("isMoving", false);
         }
 
+        animator.SetFloat("vy", rb.velocity.y);
+
     }
 
     private void ProcessInput()
@@ -115,6 +122,9 @@ public class MyPlayerController : MonoBehaviour
         if(moveVector.x != 0.0f || moveVector.z != 0.0f) {
             GetComponent<Rigidbody>().AddForce(moveVector * speed);
             transform.LookAt(transform.position + moveVector);
+             Vector3 targetVelocity = transform.rotation * Vector3.forward * speed;
+            Vector3 force = (targetVelocity - rb.velocity) * 1.8f;
+            rb.AddForce(force);
         }
 
         // Process firing
@@ -126,16 +136,24 @@ public class MyPlayerController : MonoBehaviour
         // Process Jumping
         if(jump) {
             if (numJumps > 0) {
-                GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+                GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower);
+                
                 numJumps--;
             }
             
+        } else {
+            rb.AddForce(Physics.gravity, ForceMode.Acceleration);
         }
 
         // Process Taunting
         if(taunt) {
             Debug.Log("taunted");
         }
+
+        // // apply gravity if not touching a surface
+        // if (midair) {
+            
+        // }
 
     }
 
