@@ -19,7 +19,6 @@ public class MyPlayerController : MonoBehaviour
 
     private bool fire;
 
-    private bool midair;
 
     private bool taunt;
 
@@ -43,7 +42,6 @@ public class MyPlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         numJumps = maxJumps;
-        midair = true;
     }
 
 
@@ -86,7 +84,6 @@ public class MyPlayerController : MonoBehaviour
         
         if (other.gameObject.GetComponent<Surface>()) {
             Debug.Log("Landed on  " + other.gameObject.name);
-            midair = false;
             numJumps = maxJumps;
 
         }
