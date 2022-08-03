@@ -8,7 +8,9 @@ public class MyPlayerController : MonoBehaviour
 
     private int playerId = 0;
     
-    public float speed = 3.0f;
+    public float speed;
+    public float backwardSpeed;
+    public float turnSpeed;
 
     public float jumpPower;
 
@@ -29,6 +31,9 @@ public class MyPlayerController : MonoBehaviour
     Animator animator;
 
     Rigidbody rb;
+
+    Vector3 rotationSpeed;
+    Vector3 targetVelocity;
     
 
 
@@ -116,13 +121,27 @@ public class MyPlayerController : MonoBehaviour
     private void ProcessInput()
     {
         // Process movement
-        if(moveVector.x != 0.0f || moveVector.z != 0.0f) {
-            GetComponent<Rigidbody>().AddForce(moveVector * speed);
-            transform.LookAt(transform.position + moveVector);
-             Vector3 targetVelocity = transform.rotation * Vector3.forward * speed;
+        if(moveVector.z != 0.0f) {
+                // q1// you were here
+            if (moveVector.z < 0) {
+                targetVelocity = transform.forward * backwardSpeed * moveVector.z;
+            } else {
+                targetVelocity = transform.forward * speed * moveVector.z;
+            }
+           // GetComponent<Rigidbody>().AddForce(moveVector * speed);
+            // transform.LookAt(transform.position + moveVector);
+
             Vector3 force = (targetVelocity - rb.velocity) * 1.8f;
             rb.AddForce(force);
         }
+
+        // process rotation
+        if (moveVector.x != 0.0f) {
+            rotationSpeed = new Vector3(0, moveVector.x * turnSpeed , 0);
+             Quaternion deltaRotation = Quaternion.Euler(rotationSpeed * Time.fixedDeltaTime);
+             rb.MoveRotation(rb.rotation * deltaRotation);
+        }
+       
 
         // Process firing
         // if(fire) {

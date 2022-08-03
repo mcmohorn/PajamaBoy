@@ -74,13 +74,13 @@ Material:
     - _AlphaToCoverage: 1
     - _AngleFading: 0
     - _BendFlattenStrength: 1
-    - _BendMode: 0
+    - _BendMode: 1
     - _BendPushStrength: 1
     - _Billboard: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ColorMapHeight: 0
-    - _ColorMapStrength: 1
+    - _ColorMapStrength: 0.96
     - _Cull: 0
     - _Cutoff: 0.5
     - _Darkening: 0.1
@@ -93,13 +93,13 @@ Material:
     - _GlossyReflections: 0
     - _LightingMode: 2
     - _Metallic: 0
-    - _OcclusionStrength: 0.422
+    - _OcclusionStrength: 0.328
     - _PerspectiveCorrection: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Scalemap: 0
     - _ShadowBiasCorrection: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.731
     - _SmoothnessTextureChannel: 0
     - _SpecularAmount: 0.1
     - _SpecularHighlights: 1
@@ -110,13 +110,13 @@ Material:
     - _TranslucencyIndirect: 0
     - _TranslucencyOffset: 0
     - _VertexDarkening: 0.1
-    - _WindAmbientStrength: 0.2
+    - _WindAmbientStrength: 0.019
     - _WindGustFreq: 4
     - _WindGustStrength: 0.31
     - _WindGustTint: 0.025
     - _WindObjectRand: 1
     - _WindRandStrength: 1
-    - _WindSpeed: 3.2
+    - _WindSpeed: 2.19
     - _WindStrength: 0.492
     - _WindSwinging: 0.15
     - _WindVertexRand: 0
@@ -129,7 +129,9 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FadeParams: {r: 50, g: 100, b: 0, a: 0}
     - _HueVariation: {r: 1, g: 0.63, b: 0, a: 0.15}
-    - _NormalParams: {r: 1, g: 1, b: 1, a: 0}
+    - _LODDebugColor: {r: 1, g: 1, b: 1, a: 1}
+    - _NormalParams: {r: 0.51, g: 1, b: 1, a: 0.02}
     - _ScalemapInfluence: {r: 0, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WindDirection: {r: 1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
