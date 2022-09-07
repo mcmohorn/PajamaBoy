@@ -11,6 +11,7 @@ public class MyPlayerController : MonoBehaviour
     public float speed;
     public float backwardSpeed;
     public float turnSpeed;
+    public float accelerationScale;
 
     public float jumpPower;
 
@@ -131,7 +132,7 @@ public class MyPlayerController : MonoBehaviour
            // GetComponent<Rigidbody>().AddForce(moveVector * speed);
             // transform.LookAt(transform.position + moveVector);
 
-            Vector3 force = (targetVelocity - rb.velocity) * 1.8f;
+            Vector3 force = (targetVelocity - rb.velocity) * accelerationScale;
             rb.AddForce(force);
         }
 
