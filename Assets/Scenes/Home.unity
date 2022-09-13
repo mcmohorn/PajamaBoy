@@ -12342,7 +12342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1656974151}
   verticalOffset: 2
-  horizontalOffset: 4
+  lookSpeed: 1
+  radius: 3
 --- !u!114 &1370721225
 MonoBehaviour:
   m_ObjectHideFlags: 0
