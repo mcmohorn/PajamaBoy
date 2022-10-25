@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour {
 
     public float verticalOffset;
 
-		public float lookSpeed;
+		private float lookSpeed;
     public float radius;
 
 		float horizontalOffset;
@@ -24,6 +24,7 @@ public class CameraController : MonoBehaviour {
 
 void Start() {
 	horizontalOffset = 0;
+	lookSpeed = player.GetComponent<MyPlayerController>().turnSpeed;
 	rewiredPlayer = ReInput.players.GetPlayer(0);
 }
 

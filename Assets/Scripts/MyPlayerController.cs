@@ -7,6 +7,7 @@ public class MyPlayerController : MonoBehaviour
 {
 
     private int playerId = 0;
+    public bool debugTools;
     
     public float speed;
     public float backwardSpeed;
@@ -22,10 +23,12 @@ public class MyPlayerController : MonoBehaviour
 
     private bool fire;
 
+    public Camera mainCamera;
+
 
     private bool taunt;
 
-    private Vector3 moveVector;
+    private Vector3 moveVector = new Vector3(0,0,0);
 
     private Player player; // The Rewired Player
 
@@ -35,13 +38,16 @@ public class MyPlayerController : MonoBehaviour
 
     Vector3 rotationSpeed;
     Vector3 targetVelocity;
+    Vector3 newForward = new Vector3(0,0,0);
+
     
 
 
 
 
     void Awake() {
-        Debug.Log("awaking player");
+        if (debugTools) Debug.Log("awaking player");
+        
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
         player = ReInput.players.GetPlayer(playerId);
 
@@ -89,7 +95,7 @@ public class MyPlayerController : MonoBehaviour
     {
         
         if (other.gameObject.GetComponent<Surface>()) {
-            Debug.Log("Landed on  " + other.gameObject.name);
+            if (debugTools) Debug.Log("Landed on  " + other.gameObject.name);
             numJumps = maxJumps;
 
         }
@@ -121,27 +127,58 @@ public class MyPlayerController : MonoBehaviour
 
     private void ProcessInput()
     {
+        newForward = new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z); 
+
+        
+        
+
+        Quaternion angle=Quaternion.FromToRotation(Vector3.forward, newForward);
+
+
         // Process movement
-        if(moveVector.z != 0.0f) {
-                // q1// you were here
-            if (moveVector.z < 0) {
-                targetVelocity = transform.forward * backwardSpeed * moveVector.z;
-            } else {
-                targetVelocity = transform.forward * speed * moveVector.z;
-            }
-           // GetComponent<Rigidbody>().AddForce(moveVector * speed);
-            // transform.LookAt(transform.position + moveVector);
+        if(moveVector.z != 0.0f || moveVector.x != 0.0f) {
 
-            Vector3 force = (targetVelocity - rb.velocity) * accelerationScale;
+            
+
+            moveVector = angle * moveVector;
+            Vector3 force = (moveVector * speed - rb.velocity) * accelerationScale;
+            // force = 
             rb.AddForce(force);
+            transform.LookAt(transform.position + newForward);
+            //transform.rotation = Quaternion.LookRotation(moveVector);
+
+            
         }
 
-        // process rotation
-        if (moveVector.x != 0.0f) {
-            rotationSpeed = new Vector3(0, moveVector.x * turnSpeed , 0);
-             Quaternion deltaRotation = Quaternion.Euler(rotationSpeed * Time.fixedDeltaTime);
-             rb.MoveRotation(rb.rotation * deltaRotation);
-        }
+        if (debugTools) {
+
+                Debug.DrawRay(transform.position, moveVector*3.0f, Color.red);
+                Debug.DrawRay(transform.position, transform.forward, Color.blue);
+                Debug.DrawRay(transform.position, newForward, Color.green);
+            }
+
+
+
+        
+        
+
+        
+
+
+        // Determine which direction to rotate towards
+        // Vector3 targetDirection = transform.position + moveVector;
+
+        // // The step size is equal to speed times frame time.
+        // float singleStep = rotSpeed * Time.deltaTime;
+
+        // // Rotate the forward vector towards the target direction by one step
+        // Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+
+        // Draw a ray pointing at our target in
+        
+
+        // Calculate a rotation a step closer to the target and applies rotation to this object
+        //transform.rotation = Quaternion.LookRotation(newDirection);
        
 
         // Process firing
@@ -159,7 +196,7 @@ public class MyPlayerController : MonoBehaviour
             }
             
         } else {
-            rb.AddForce(Physics.gravity, ForceMode.Acceleration);
+            rb.AddForce(Physics.gravity*2.0f, ForceMode.Acceleration);
         }
 
         // Process Taunting

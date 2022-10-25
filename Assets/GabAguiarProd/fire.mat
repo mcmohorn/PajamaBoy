@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: fire
+  m_Shader: {fileID: -6465566751694194690, guid: 07aef6fd9f2f0455abc7fda6a21f6219, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - MainTexture_:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - AlphaClip_: 0.1
+    - DissolvePower_: 3.71
+    - DissolveScale_: 5
+    - DissolveSpeed_: 0.5
+    - DistortionAmount_: 0.05
+    - DistortionScale_: 30
+    - MaskBrightness_: 2.98
+    - MaskPower_: 4.99
+    - SoftParticle_: 1
+    - VertexOffsetAmount_: 0
+    - VertexOffsetMask_: 2
+    - VertexOffsetPower_: 1
+    - VertexOffsetScale_: 15
+    m_Colors:
+    - Color_: {r: 1, g: 1, b: 1, a: 1}
+    - DistortionSpeed_: {r: 0, g: 0, b: 0, a: 0}
+    - VertexOffsetSpeed_: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

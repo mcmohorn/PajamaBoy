@@ -134,7 +134,7 @@ Material:
     m_Floats:
     - _AO: 1
     - _Alphacutoff: 0.415
-    - _AmbientOcclusion: 0.2
+    - _AmbientOcclusion: 0.426
     - _BendingInfluence: 0
     - _BlendSpeed: 1
     - _BumpScale: 1
@@ -145,12 +145,12 @@ Material:
     - _Debug: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FlatLighting: 0
+    - _FlatLighting: 0.723
     - _Float1: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GradientBrightness: 0.8
+    - _GradientBrightness: 1.19
     - _Height: 0
     - _MaskClipValue: 0.5
     - _MaxWindStrength: 0.5
@@ -165,7 +165,7 @@ Material:
     - _Shadows: 0
     - _Shininess: 0.1
     - _SmoothShading: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.336
     - _SmoothnessTextureChannel: 0
     - _SnowHeight: 0
     - _SpecularHighlights: 1
@@ -200,14 +200,14 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 3.0785344, g: 2.6439178, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HueVariation: {r: 1, g: 0.80689657, b: 0, a: 0.366}
+    - _HueVariation: {r: 1, g: 0.8286115, b: 0, a: 0.366}
     - _SSSColor: {r: 0.9368154, g: 1, b: 0.3455882, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 0}
     - _TranslucencyColor: {r: 0.73, g: 0.85, b: 0.41, a: 1}
     - _Transmisioncolor: {r: 0.862069, g: 1, b: 0, a: 0.259}
-    - _TransmissionColor: {r: 1, g: 1, b: 1, a: 0.284}
+    - _TransmissionColor: {r: 0.0009765625, g: 0.0009765625, b: 0.0009765625, a: 0.284}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
     - _VariationColor: {r: 1, g: 0.6827586, b: 0, a: 0.266}
