@@ -9,11 +9,12 @@ public class CameraController : MonoBehaviour {
 
 		private Player rewiredPlayer;
 
-    public float verticalOffset;
+		public float startHeight;
 
 		private float lookSpeed;
-    public float radius;
-
+    public float radiusX;
+		public float radiusY;
+		float verticalOffset;
 		float horizontalOffset;
 
 
@@ -46,9 +47,9 @@ void GetInput()
 			horizontalOffset += (lookVector.x * lookSpeed);
 		}
 
-		transform.position =  new Vector3(origin.x + radius*Mathf.Sin(horizontalOffset), origin.y + verticalOffset, origin.z - radius*Mathf.Cos(horizontalOffset));
+		verticalOffset = startHeight + radiusY*Mathf.Sin(Mathf.PI/2.0f*lookVector.y);
 
-// 		transform.position = player.transform.position + new Vector3( Vector3.up * verticalOffset - (horizontalOffset) * player.transform.forward;
+		transform.position =  new Vector3(origin.x + radiusX*Mathf.Sin(horizontalOffset), origin.y + verticalOffset, origin.z - radiusX*Mathf.Cos(horizontalOffset));
 
 		transform.LookAt(player.transform.position + player.transform.up);
 
