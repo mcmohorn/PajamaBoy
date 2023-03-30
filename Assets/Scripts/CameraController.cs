@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour {
 		float horizontalOffset;
 
 
+
 		Vector3 origin;
 
 		Vector2 lookVector;

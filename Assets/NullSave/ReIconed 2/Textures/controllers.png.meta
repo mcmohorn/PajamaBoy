@@ -1098,7 +1098,7 @@ TextureImporter:
       213: 21300916
     second: (233)
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -1119,6 +1119,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1157,6 +1158,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 1
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1196,6 +1198,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
@@ -5671,6 +5685,219 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      (0) PS Bumper Blank: 21300000
+      (1) PS L1: 21300002
+      (10) Circle: 21300020
+      (100) JS Right Horizontal: 21300802
+      (101) JS Right Vertical: 21300804
+      (102) JS Right Up: 21300806
+      (103) JS Right Right: 21300808
+      (104) JS Right Down: 21300810
+      (105) JS Right Left: 21300812
+      (106) PS Bumper Blank: 21300256
+      (107) PS L1: 21300258
+      (108) PS R1: 21300260
+      (109) Switch Bumper: 21300262
+      (11) Cross: 21300022
+      (110) Switch L: 21300264
+      (111) Switch R: 21300266
+      (12) Square: 21300024
+      (13) Triangle: 21300026
+      (134): 21300268
+      (135): 21300270
+      (136): 21300272
+      (137): 21300274
+      (138): 21300276
+      (139): 21300278
+      (14) Menu: 21300028
+      (140): 21300280
+      (141): 21300282
+      (142): 21300284
+      (143): 21300286
+      (144): 21300288
+      (145): 21300290
+      (146): 21300292
+      (147): 21300294
+      (148): 21300296
+      (149): 21300298
+      (15) View: 21300030
+      (150): 21300300
+      (151): 21300302
+      (152): 21300304
+      (153): 21300306
+      (154): 21300308
+      (155): 21300310
+      (156): 21300312
+      (157): 21300314
+      (158): 21300316
+      (159): 21300318
+      (16) Empty Button: 21300032
+      (160): 21300320
+      (161): 21300322
+      (162): 21300324
+      (163): 21300326
+      (164): 21300328
+      (165): 21300330
+      (166): 21300332
+      (167): 21300334
+      (168): 21300336
+      (169): 21300338
+      (17) XBOX Button: 21300034
+      (170): 21300340
+      (171): 21300342
+      (172): 21300344
+      (173): 21300346
+      (174): 21300348
+      (175): 21300350
+      (176): 21300352
+      (177): 21300354
+      (178): 21300356
+      (179): 21300358
+      (18) PS Button: 21300036
+      (180): 21300360
+      (181): 21300362
+      (182): 21300364
+      (183): 21300366
+      (184): 21300818
+      (185): 21300820
+      (186): 21300822
+      (187): 21300824
+      (188): 21300826
+      (189): 21300828
+      (19) Home: 21300038
+      (190): 21300830
+      (191): 21300832
+      (192): 21300834
+      (193): 21300836
+      (194): 21300838
+      (195): 21300840
+      (196): 21300842
+      (197): 21300844
+      (198): 21300846
+      (199): 21300848
+      (2) PS R1: 21300004
+      (20) Capture: 21300040
+      (200): 21300850
+      (201): 21300852
+      (202): 21300854
+      (203): 21300856
+      (204): 21300858
+      (205): 21300860
+      (206): 21300862
+      (207): 21300864
+      (208): 21300866
+      (209): 21300868
+      (21) Options: 21300042
+      (210): 21300870
+      (211): 21300872
+      (212): 21300874
+      (213): 21300876
+      (214): 21300878
+      (215): 21300880
+      (216): 21300882
+      (217): 21300884
+      (218): 21300886
+      (219): 21300888
+      (22) Share: 21300044
+      (220): 21300890
+      (221): 21300892
+      (222): 21300894
+      (223): 21300896
+      (224): 21300898
+      (225): 21300900
+      (226): 21300902
+      (227): 21300904
+      (228): 21300906
+      (229): 21300908
+      (23) Minus: 21300046
+      (230): 21300910
+      (231): 21300912
+      (232): 21300914
+      (233): 21300916
+      (24) Plus: 21300048
+      (25) PS4: 21300050
+      (26) Switch: 21300052
+      (27) XBOX One: 21300054
+      (28) PS Controller: 21300056
+      (29) Switch Controller: 21300058
+      (3) Switch Bumper: 21300368
+      (30) XBOX Controller: 21300060
+      (31) XBOX DPad: 21300424
+      (32) XBOX DPad Down: 21300426
+      (33) XBOX DPad Horizontal: 21300428
+      (34) XBOX DPad Left: 21300430
+      (35) XBOX DPad Right: 21300432
+      (36) XBOX DPad Up: 21300434
+      (37) XBOX DPad Vertical: 21300436
+      (38) PS DPad: 21300438
+      (39) PS DPad Down: 21300440
+      (4) Switch L: 21300008
+      (40) PS DPad Horizontal: 21300442
+      (41) PS DPad Left: 21300444
+      (42) PS DPad Right: 21300446
+      (43) PS DPad Up: 21300448
+      (44) PS DPad Vertical: 21300450
+      (45) Switch DPad: 21300452
+      (46) Switch DPad Down: 21300454
+      (47) Switch DPad Horizontal: 21300456
+      (48) Switch DPad Left: 21300458
+      (49) Switch DPad Right: 21300460
+      (5) Switch R: 21300010
+      (50) Switch DPad Up: 21300462
+      (51) Switch DPad Vertical: 21300464
+      (52) GearVR Back: 21300466
+      (53) GearVR Touch: 21300468
+      (54) GearVR Press: 21300470
+      (55) GearVR Trigger: 21300472
+      (56) XBOX JS: 21300474
+      (57) XBOX JS Press: 21300476
+      (58) XBOX JS Left: 21300478
+      (59) XBOX JS Left Press: 21300480
+      (6) A: 21300012
+      (60) XBOX JS Right: 21300482
+      (61) XBOX JS Right Press: 21300484
+      (62) PS JS: 21300486
+      (63) PS JS Press: 21300488
+      (64) PS JS Left: 21300490
+      (65) PS JS Left Press: 21300492
+      (66) PS JS Right: 21300494
+      (67) PS JS Right Press: 21300496
+      (68) Switch JS: 21300498
+      (69) Switch JS Press: 21300500
+      (7) B: 21300014
+      (70) Switch JS Left: 21300502
+      (71) Switch JS Left Press: 21300504
+      (72) Switch JS Right: 21300506
+      (74) LB: 21300510
+      (74) Switch JS Right Press: 21300782
+      (75) Left Bumper: 21300512
+      (76) LT: 21300514
+      (77) Left Trigger: 21300516
+      (78) RB: 21300518
+      (79) Right Bumper: 21300520
+      (8) X: 21300016
+      (80) RT: 21300522
+      (81) Right Trigger: 21300524
+      (82) Slim Button: 21300526
+      (83) SL: 21300528
+      (84) SR: 21300530
+      (85) Touch Pad: 21300784
+      (86) PS Trigger: 21300534
+      (87) L2: 21300536
+      (88) R2: 21300538
+      (89) Switch Trigger: 21300540
+      (9) Y: 21300018
+      (90) ZL: 21300542
+      (91) ZR: 21300544
+      (92) JS Left All: 21300786
+      (93) JS Left Horizontal: 21300788
+      (94) JS Left Vertical: 21300790
+      (95) JS Left Up: 21300792
+      (96) JS Left Down: 21300794
+      (97) JS Left Right: 21300796
+      (98) JS Left Left: 21300798
+      (99) JS Right All: 21300800
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
