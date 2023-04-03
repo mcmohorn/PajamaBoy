@@ -1399,6 +1399,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 31
       objectReference: {fileID: 0}
+    - target: {fileID: 8820863067663767132, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 011577832b6c64d8e97900702d24d9a9, type: 3}
     - target: {fileID: 8896323812873760278, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1406,14 +1410,6 @@ PrefabInstance:
     - target: {fileID: 8896323812873760278, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_Layer
       value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 8896323812873760280, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8896323812873760280, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
-      propertyPath: m_Constraints
-      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 8896323812873760281, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_RootOrder
@@ -1472,13 +1468,13 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8896323812873760282, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
-      propertyPath: turnSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8896323812873760282, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1036788308}
+    - target: {fileID: 8896323812873760285, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 011577832b6c64d8e97900702d24d9a9, type: 3}
     - target: {fileID: 9183868316211353176, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_Layer
       value: 31

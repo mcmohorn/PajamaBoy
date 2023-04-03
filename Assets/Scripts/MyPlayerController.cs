@@ -6,9 +6,7 @@ using Rewired;
 public class MyPlayerController : MonoBehaviour
 {
     
-    
-    
-    [Tooltip("Toggle on/off to show helpful Raycasts etc.")]
+    [Tooltip("Toggle on/off logging and stuff")]
     public bool debugTools;
 
     [Tooltip("Main camera for the scene")]
@@ -18,20 +16,22 @@ public class MyPlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 4.0f;
-    private float jumpHeight = 3.0f;
+
+    [Tooltip("How fast the player can move")]
+    public float playerSpeed = 4.0f;
+
+    [Tooltip("How high the player can jump")]
+    public float jumpHeight = 3.0f;
+
     private float gravityValue = -9.81f;
     
    
-    public float turnSpeed;
+    public float turnSpeed; // (look sensitivity, accessed by camera controller)
 
+    // actions
     private bool taunt;
-
     private bool fire;
     private bool jump;
-
-    private int maxJumps =1;
-    private int numJumps =0;
 
     private Vector3 moveVector = new Vector3(0,0,0);
     private Player player; // The Rewired Player
@@ -61,6 +61,7 @@ public class MyPlayerController : MonoBehaviour
         player = ReInput.players.GetPlayer(playerId);
 
         animator = GetComponent<Animator>();
+ 
     }
 
     void Update()
@@ -143,14 +144,11 @@ public class MyPlayerController : MonoBehaviour
         }
 
 
-    // Changes the height position of the player..
         if (jump && groundedPlayer)
         {
             jumping = true;
-            Debug.Log("JUMP");
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
-        
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -162,26 +160,9 @@ public class MyPlayerController : MonoBehaviour
         //     bullet.GetComponent<Rigidbody>().AddForce(transform.right * bulletSpeed, ForceMode.VelocityChange);
         // }
 
-
-        
-        // Process Jumping
-        if(jump) {
-            Debug.Log("should jump... grounded?" + groundedPlayer );
-            
-        } else {
-
-        }
-
         // Process Taunting
         if(taunt) {
             Debug.Log("taunted");
         }
-
-
-
     }
-
-    
-
-
 }
