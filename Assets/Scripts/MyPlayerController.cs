@@ -20,6 +20,9 @@ public class MyPlayerController : MonoBehaviour
     [Tooltip("How fast the player can move")]
     public float playerSpeed = 4.0f;
 
+    [Tooltip("Factor by which running is faster than walking")]
+    public float sprintMultiplier = 2.0f;
+
     [Tooltip("How high the player can jump")]
     public float jumpHeight = 3.0f;
 
@@ -32,6 +35,7 @@ public class MyPlayerController : MonoBehaviour
     private bool taunt;
     private bool fire;
     private bool jump;
+    private bool sprint;
 
     private Vector3 moveVector = new Vector3(0,0,0);
     private Player player; // The Rewired Player
@@ -84,6 +88,7 @@ public class MyPlayerController : MonoBehaviour
         jump = player.GetButtonDown("Jump");
         fire = player.GetButtonDown("Fire");
         taunt = player.GetButtonDown("Taunt");
+        sprint = player.GetButton("Sprint");
         
     }
 
@@ -92,6 +97,9 @@ public class MyPlayerController : MonoBehaviour
     {
 
         animator.SetBool("isJumping", jumping);
+        animator.SetBool("isSprinting", sprint);
+
+        
 
         if (!animator.GetBool("isTaunting")) {
             animator.SetBool("isTaunting", taunt);
@@ -99,8 +107,10 @@ public class MyPlayerController : MonoBehaviour
 
         if(moveVector.x != 0.0f || moveVector.z != 0.0f) {
             animator.SetBool("isMoving", true);
+
         } else {
             animator.SetBool("isMoving", false);
+
         }
 
         animator.SetFloat("vy", controller.velocity.y);
@@ -134,7 +144,16 @@ public class MyPlayerController : MonoBehaviour
 
         Vector3 move = new Vector3(moveVector.x, 0, moveVector.z);
         move = angle * move;
-        controller.Move(move * Time.deltaTime * playerSpeed);
+
+        float currSpeed = playerSpeed;
+
+        if (sprint) {
+            Debug.Log("should sprint..");
+            currSpeed = playerSpeed * sprintMultiplier;
+        } 
+
+
+        controller.Move(move * Time.deltaTime * currSpeed);
 
         if (move != Vector3.zero)
         {
