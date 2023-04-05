@@ -48,7 +48,6 @@ public class MyPlayerController : MonoBehaviour
     Vector3 rotationSpeed;
     Vector3 targetVelocity;
     Vector3 newForward = new Vector3(0,0,0);
-
     
 
     private void Start()
@@ -116,6 +115,8 @@ public class MyPlayerController : MonoBehaviour
         animator.SetFloat("vy", controller.velocity.y);
 
     }
+
+    
 
     private void ProcessInput()
     {
