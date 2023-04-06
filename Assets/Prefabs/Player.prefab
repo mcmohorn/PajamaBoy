@@ -70,9 +70,6 @@ MonoBehaviour:
   sprintMultiplier: 2
   jumpHeight: 3
   turnSpeed: 0.01
-  headbone: {fileID: 0}
-  leftEye: {fileID: 0}
-  rightEye: {fileID: 0}
 --- !u!95 &8896323812873760285
 Animator:
   serializedVersion: 5
@@ -199,7 +196,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7571374790529695916}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 0409298fb59d14c65aee5e5074edaad3, type: 3}
   m_Controller: {fileID: 9100000, guid: 4802c06d8ec2c4323a7e64a72907a163, type: 2}
   m_CullingMode: 1
