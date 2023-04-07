@@ -36,6 +36,14 @@ public class MyPlayerController : MonoBehaviour
     private bool fire;
     private bool jump;
     private bool sprint;
+    private bool summon;
+
+    [Tooltip("Prefab of animal summoning object, should have AnimalSummon script attached")]
+    public GameObject summonPrefab;
+    public float summonCooldownTime;
+    private float summonCooldown;
+    public float summonCastTime;
+    private bool summoning;
 
     private Vector3 moveVector = new Vector3(0,0,0);
     private Player player; // The Rewired Player
@@ -88,6 +96,7 @@ public class MyPlayerController : MonoBehaviour
         fire = player.GetButtonDown("Fire");
         taunt = player.GetButtonDown("Taunt");
         sprint = player.GetButton("Sprint");
+        summon = player.GetButton("Summon");
         
     }
 
@@ -97,8 +106,8 @@ public class MyPlayerController : MonoBehaviour
 
         animator.SetBool("isJumping", jumping);
         animator.SetBool("isSprinting", sprint);
-
         
+        animator.SetBool("isSummoning", summon);
 
         if (!animator.GetBool("isTaunting")) {
             animator.SetBool("isTaunting", taunt);
@@ -149,7 +158,6 @@ public class MyPlayerController : MonoBehaviour
         float currSpeed = playerSpeed;
 
         if (sprint) {
-            Debug.Log("should sprint..");
             currSpeed = playerSpeed * sprintMultiplier;
         } 
 
@@ -184,5 +192,25 @@ public class MyPlayerController : MonoBehaviour
         if(taunt) {
             Debug.Log("taunted");
         }
+
+        if (summonCooldown > 0) {
+            summonCooldown -= Time.deltaTime;
+        } else if (summon) {
+            summonCooldown = summonCooldownTime;
+            StartCoroutine(SummonCreature());
+        }
+
+    }
+
+    public IEnumerator SummonCreature()
+    {
+        yield return new WaitForSeconds(summonCastTime);
+        GameObject summonedCreature = (GameObject)Instantiate(summonPrefab, transform.position + transform.forward, transform.rotation);
+        float creatureSpeed = summonedCreature.GetComponent<AnimalSummon>().speed;
+        summonedCreature.SetActive( true);
+        StartCoroutine(summonedCreature.GetComponent<AnimalSummon>().ErodeObject());
+        summonedCreature.GetComponent<Rigidbody>().velocity = transform.forward * creatureSpeed;
+        Destroy(summonedCreature, 3f);
+
     }
 }
