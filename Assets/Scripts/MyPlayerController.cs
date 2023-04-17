@@ -12,6 +12,12 @@ public class MyPlayerController : MonoBehaviour
     [Tooltip("Main camera for the scene")]
     public Camera mainCamera;
 
+    [Tooltip("The 2D canvas for drawing HUD elements")]
+    public Canvas mainCanvas;
+
+    [Tooltip("Main menu element")]
+    public RectTransform menu;
+
     // standard unity characer movement things
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -36,32 +42,50 @@ public class MyPlayerController : MonoBehaviour
     private bool fire;
     private bool jump;
     private bool sprint;
-    private bool summon;
-
-    [Tooltip("Prefab of animal summoning object, should have AnimalSummon script attached")]
-    public GameObject summonPrefab;
-    public float summonCooldownTime;
-    private float summonCooldown;
-    public float summonCastTime;
-    private bool summoning;
+    private bool start;
 
     private Vector3 moveVector = new Vector3(0,0,0);
-    private Player player; // The Rewired Player
+    public Player player; // The Rewired Player
     private int playerId = 0;
     private bool jumping = false;
 
-    Animator animator;
-
+    public Animator animator;
 
     Vector3 rotationSpeed;
     Vector3 targetVelocity;
     Vector3 newForward = new Vector3(0,0,0);
-    
+
+    [Tooltip("UI Prefab instantiated for each ability")]
+    public GameObject abilityButtonPrefab;
+
+    private Ability[] abilities;
 
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
         controller.minMoveDistance = 0;  // it was at .001 and jumping wouldn't work
+        SetupUI();
+        ResumeGame();
+    }
+
+    private void SetupUI()
+    {
+        mainCanvas.gameObject.SetActive(true);
+        abilities = gameObject.GetComponents<Ability>();
+        Debug.Log("instantiating " + abilities.Length + " abilities");
+
+        // now instantiate AbilityButton prefabs in the players canvas
+        foreach (var ability in abilities)
+        {
+            ability.player = gameObject.GetComponent<MyPlayerController>();
+            GameObject abilityButton = Instantiate(abilityButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            abilityButton.transform.SetParent (mainCanvas.transform, false);
+
+            ability.button = abilityButton.GetComponent<AbilityButton>();
+            ability.button.ability = ability;
+            ability.button.timerText.text = "";
+        }
+
     }
 
 
@@ -96,7 +120,7 @@ public class MyPlayerController : MonoBehaviour
         fire = player.GetButtonDown("Fire");
         taunt = player.GetButtonDown("Taunt");
         sprint = player.GetButton("Sprint");
-        summon = player.GetButton("Summon");
+        start = player.GetButtonDown("Start");
         
     }
 
@@ -107,8 +131,6 @@ public class MyPlayerController : MonoBehaviour
         animator.SetBool("isJumping", jumping);
         animator.SetBool("isSprinting", sprint);
         
-        animator.SetBool("isSummoning", summon);
-
         if (!animator.GetBool("isTaunting")) {
             animator.SetBool("isTaunting", taunt);
         }
@@ -193,24 +215,31 @@ public class MyPlayerController : MonoBehaviour
             Debug.Log("taunted");
         }
 
-        if (summonCooldown > 0) {
-            summonCooldown -= Time.deltaTime;
-        } else if (summon) {
-            summonCooldown = summonCooldownTime;
-            StartCoroutine(SummonCreature());
+        if (start) {
+            if (Time.timeScale > 0) {
+                PauseGame();
+
+            } else {
+                ResumeGame();
+            }
         }
 
+        
+
     }
 
-    public IEnumerator SummonCreature()
+    void PauseGame ()
     {
-        yield return new WaitForSeconds(summonCastTime);
-        GameObject summonedCreature = (GameObject)Instantiate(summonPrefab, transform.position + transform.forward, transform.rotation);
-        float creatureSpeed = summonedCreature.GetComponent<AnimalSummon>().speed;
-        summonedCreature.SetActive( true);
-        StartCoroutine(summonedCreature.GetComponent<AnimalSummon>().ErodeObject());
-        summonedCreature.GetComponent<Rigidbody>().velocity = transform.forward * creatureSpeed;
-        Destroy(summonedCreature, 3f);
+        Time.timeScale = 0;
+        menu.gameObject.SetActive(true);
+    }
+
+    void ResumeGame ()
+    {
+        Time.timeScale = 1;
+        menu.gameObject.SetActive(false);
 
     }
+
+    
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   - inputName: X
     unitySprite: {fileID: 21300016, guid: bec84854812e7fd40bb929c169fb3a1e, type: 3}
     tmpSpriteIndex: 8
-  - inputName: Y
+  - inputName: Summon
     unitySprite: {fileID: 21300018, guid: bec84854812e7fd40bb929c169fb3a1e, type: 3}
     tmpSpriteIndex: 9
   - inputName: Left Shoulder
