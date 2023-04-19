@@ -95,6 +95,8 @@ public class MyPlayerController : MonoBehaviour
             ability.button.abilityImage.texture = ability.icon;
 
 
+            ability.button.controlAction.actionName = ability.inputButtonName;
+
         }
 
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using NullSave;
 
 public class AbilityButton : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class AbilityButton : MonoBehaviour
     public Ability ability;
 
     public RawImage abilityImage;
+
+    public ReIconedImageAction controlAction;
 
     public Image ring;
 

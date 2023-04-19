@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 0}
   abilityImage: {fileID: 224955638460380963}
+  controlAction: {fileID: 647717634126658378}
   ring: {fileID: 434499948110828532}
   timerText: {fileID: 3785389818901664776}
 --- !u!1 &8140842324766137139
