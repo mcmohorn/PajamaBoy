@@ -130,7 +130,7 @@ public class MyPlayerController : MonoBehaviour
 
         // receive button inputs
         jump = player.GetButtonDown("Jump");
-        fire = player.GetButtonDown("Fire");
+        // fire = player.GetButtonDown("Fire");
         taunt = player.GetButtonDown("Taunt");
         sprint = player.GetButton("Sprint");
         start = player.GetButtonDown("Start");

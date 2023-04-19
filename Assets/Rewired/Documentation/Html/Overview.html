@@ -150,7 +150,7 @@
     <ul>
       <li>Works in Unity free and Pro.</li>
       <li>Player-centric input system.</li>
-      <li>Full hot-plugging support on Windows, OSX, Linux, Windows 8 Store, Windows 10 Universal, Ouya, WebGL, Xbox One, Xbox Series S/X, PS4, and Switch. (Other platforms depend on Unity's input system's support for hot-plugging on that platform.)</li>
+      <li>Full hot-plugging support on Windows, OSX, Linux, Windows 10 Universal, WebGL, Xbox One, Xbox Series S/X, PS4, PS5, Nintendo Switch, and Stadia. (Other platforms depend on Unity's input system's support for hot-plugging on that platform.)</li>
       <li>Extended native input support on several platforms.</li>
       <li>Optional XInput support for Windows (mandatory for Windows 8 Store).</li>
       <li>Fallback on Unity input for all other platforms. Most features still work.</li>
@@ -176,7 +176,7 @@
       <li>For any controller not included, you can map an Unknown controller which includes all possible buttons/axes on the platform (Windows 128 buttons &amp; 32 axes, etc.) Regardless of whether you define a map for this, users will always be able to manually map every element on the controller. This means support for the vast majority of USB and Bluetooth controllers. <span style="vertical-align: super; font-size: 65%;">[<a href="#clarifications">1</a>]</span></li>
       <li>Controller template system so you can either choose to create default maps for every controller you wish to explicitly support, or save time and just map the template. All controllers that use that template will be mapped automatically. Rewired comes with controller templates for gamepads, flight controllers, racing wheels, and 6-dof controllers. User can always map any remaining controller elements even if they're not defined on the template.</li>
       <li>Named buttons and controller elements for supported controllers (for help messages and config screens).</li>
-      <li>Vibration (Windows, Windows 8 Store, Windows 10 Universal, OSX, Linux, XBox One, Xbox Series S/X, PS4, Switch currently).</li>
+      <li>Vibration (Windows,  Windows 10 Universal, OSX, Linux, XBox One, Xbox Series S/X, PS4, PS5, Nintendo Switch, and Stadia currently).</li>
       <li>Advanced controller features such as vibration, touchpad, light, and gyro on the Sony DualShock 4 and DualSense controllers.</li>
       <li>Custom Controllers  - Any source can be used to drive the controller's element values. Custom Controllers can be used for on-screeen touch controllers and more.</li>
     </ul>
@@ -287,18 +287,6 @@
           <span class="note">(keyboard, mouse, controllers)</span></td>
       </tr>
       <tr>
-        <td>Windows 8 Store</td>
-        <td align="center"><span class="native">Native<br />
-          <span class="note">(controllers)</span>        </span></td>
-        <td align="center">--</td>
-      </tr>
-      <tr>
-        <td>Windows 8.1 Universal</td>
-        <td align="center"><span class="native">Native<br />
-          <span class="note">(controllers)</span>        </span></td>
-        <td align="center">--</td>
-      </tr>
-      <tr>
         <td>Windows 10 Universal 32-bit/64-bit</td>
         <td align="center"><span class="native">Native<br />
           <span class="note">(controllers)</span>        </span></td>
@@ -350,10 +338,16 @@
         <td align="center">--</td>
       </tr>
       <tr>
-        <td>Sony PlayStation 4</td>
+        <td>Sony PlayStation 4 <span style="vertical-align: super; font-size: 65%">[<a href="#clarifications">4</a>]</span></td>
         <td align="center"><span class="semi-native">Semi Native</span> <span style="vertical-align: super; font-size: 65%">[<a href="#clarifications">2</a>]</span><br />
           <span class="note">(controllers)</span></td>
         <td align="center"><span class="semi-native">Semi Native</span> <span style="vertical-align: super; font-size: 65%">[<a href="#clarifications">2</a>]</span><br /><span class="note">(controllers)</span></td>
+      </tr>
+      <tr>
+        <td>Sony PlayStation 5 <span style="vertical-align: super; font-size: 65%">[<a href="#clarifications">4</a>]</span></td>
+        <td align="center">--</td>
+        <td align="center"><span class="semi-native">Semi Native</span> <span style="vertical-align: super; font-size: 65%">[<a href="#clarifications">2</a>]</span><br />
+          <span class="note">(controllers)</span></td>
       </tr>
       <tr>
         <td>Microsoft XBox One (XDK)</td>
@@ -381,34 +375,12 @@
           <span class="note">(keyboard, mouse, controllers)</span></span></td>
       </tr>
       <tr>
-        <td>Ouya</td>
-        <td align="center"><span class="native">Native<br />
-            <span class="note">(controllers)</span></span></td>
-        <td align="center"><span class="native">Native<br />
-          <span class="note">(controllers)</span>        </span></td>
-      </tr>
-      <tr>
         <td>Apple TV (tvOS)</td>
         <td align="center"><span class="unity-input">Unity</span></td>
         <td align="center"><span class="unity-input">Unity</span></td>
       </tr>
       <tr>
         <td>Amazon Fire TV</td>
-        <td align="center"><span class="unity-input">Unity</span></td>
-        <td align="center"><span class="unity-input">Unity</span></td>
-      </tr>
-      <tr>
-        <td>Google Nexus Player</td>
-        <td align="center"><span class="unity-input">Unity</span></td>
-        <td align="center"><span class="unity-input">Unity</span></td>
-      </tr>
-      <tr>
-        <td>Razer Forge TV</td>
-        <td align="center"><span class="unity-input">Unity</span></td>
-        <td align="center"><span class="unity-input">Unity</span></td>
-      </tr>
-      <tr>
-        <td>GameStick</td>
         <td align="center"><span class="unity-input">Unity</span></td>
         <td align="center"><span class="unity-input">Unity</span></td>
       </tr>

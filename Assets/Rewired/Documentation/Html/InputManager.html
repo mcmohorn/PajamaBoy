@@ -154,10 +154,11 @@
     <p>Create an Input Manager in the scene from the menu:
       Window -&gt; Rewired -&gt; Create -&gt; Input Manager</p>
     <ul>
-      <li>Input Manager (in scene) - Will create the Rewired Input Manager in the current scene.</li>
       <li>Input Manager (prefab) - Will create the Rewired Input Manager as a prefab asset in the project. This is the recommended option to use. (* Do not save the prefab anywhere within the Rewired folder. This will avoid data loss issues should you need to delete and re-install Rewired. *)</li>
-    </ul>
-    <p><strong>Editing Input</strong></p>
+      <li>Input Manager (in scene) - Will create the Rewired Input Manager in the current scene. (Not recommended.)</li>
+      </ul>
+    <p><em><strong>It is highly recommended that you create an Input Manager prefab and use Rewired Initializer to instantiate. <a href="#rewired-initializer">See this for more information</a>.</strong></em></p>
+<p><strong>Editing Input</strong></p>
 <p>The <a href="RewiredEditor.html">Rewired Editor</a> allows you to create and edit input. Launch the Rewired Editor by clicking on the Rewired Input Manager in the scene hierarchy and clicking the &quot;Launch Rewired Editor&quot; button in the inspector. This will allow you to edit the input configuration data stored in the selected Rewired Input Manager.</p>
 <p><strong>Settings</strong></p>
 <p>Configure settings in <a href="RewiredEditor.html#Settings">Rewired Editor - Settings</a>.</p>
@@ -191,7 +192,8 @@
     <p>&nbsp;</p>
     <p><strong>Using the Rewired Input Manager in your game</strong></p>
     <p>For finished game builds, the Rewired Input Manager (or a Rewired Initializer) should exist in your initial game scene. Make sure &quot;Don't Destroy On Load&quot; is checked so Rewired will persist throughout the entire game session.    </p>
-    <h5>Testing Individual Scenes    </h5>
+    <p><strong>Testing Individual Scenes</strong></p>
+    <h5><strong><a name="rewired-initializer" id="rewired-initializer"></a>Rewired Initializer</strong></h5>
     <p>It is recommended you create a Rewired Initializer in each of your scenes. The Initializer will spawn the Rewired Input Manager as needed on Awake, but will not spawn multiple Rewired Input Managers when loading  new scenes avoiding errors. This will allow you to use the same Rewired Input Manager in each scene and be able to test these scenes individually in the editor or load them during gameplay.</p>
     <p>Create a Rewired Initializer from the menu: Window -&gt; Rewired -&gt; Create -&gt; Initializer</p>
     <p>After the Rewired Initializer is created, you will need set up a link to a Rewired Input Manager prefab in the inspector.</p>

@@ -137,12 +137,12 @@
     	<div class="main-body">
 	        <div class="logo"><a href="http://guavaman.com/projects/rewired" title="Rewired"><img src="files/images/rewired-logo.png" width="173" height="139" alt="Rewired" /></a></div>
                      
-            <h1>
+          <h1>
             <!-- InstanceBeginEditable name="PageHeader" -->How To's
       <!-- InstanceEndEditable -->
             </h1>
             
-			<!-- InstanceBeginEditable name="MainBody" -->
+		  <!-- InstanceBeginEditable name="MainBody" -->
 
     <p>The following information was written under the assumption that you have already completely read and understood all documentation topics under Essentials and Concepts in the <a href="Documentation.html">Documentation</a>. If you have not done so, please do before continuing.</p>
     <p><strong>Topics:</strong></p>
@@ -197,8 +197,7 @@
       <li><a href="#dualsense-special-features">Using Sony DualSense special features</a></li>
       <li><a href="#raildriver-special-features">Using P.I. Engineering Rail Driver special features</a></li>
       <li><a href="#xbox-one-controller-special-features">Using XBox One controller special features on XBox One platform</a></li>
-      <li><a href="#ps4-gamepad-special-features">Using PS4 gamepad special features on PS4 platform</a></li>
-      <li><a href="#ps4-aim-special-features">Using PS4 Aim Controller special features on PS4 platform</a></li>
+      <li><a href="#apple-game-controller-framework">Apple Game Controller Framework special features</a></li>
       <li><a href="#asmdef-files">Using asmdef files with Rewired</a></li>
     </ul>
     <p>&nbsp;</p>
@@ -920,6 +919,9 @@ for(int i = 0; i &lt; targetCount; i++) {
   <li>Optional: Further information about the mapping can be found in the ActionElementMap such as the Axis Range, Axis Contribution, type, or other useful information should you need more specific glyphs for a finer level of detail.</li>
   </ol>
 <p>Below is a basic example that shows both one method of storing the glyph lookup data and how to get the current element glyph for an <a href="Actions.html">Action</a>.</p>
+<ul>
+  <li><a href="https://guavaman.com/projects/rewired/files/docs/ShowControllerGlyphsExample.zip">A more complete example that shows handling Joystick, Keyboard  (including modifier keys), and Mouse glyphs can be downloaded here.</a></li>
+</ul>
 <pre class="code">
 <span class="comment">// ShowControllerGlyphs.cs</span>
 using UnityEngine;
@@ -2476,7 +2478,7 @@ using System.Collections.Generic;
   <p>&nbsp;</p>
 <hr />
   <h3><a name="dualshock-4-special-features"></a>Using Sony DualShock 4 special features</h3>
-  <p>The Sony DualShock 4 supports vibration, gyro/accelerometer, touchpad, and changing the light color on Windows Standalone and OSX* only at present (<a href="http://guavaman.com/projects/rewired/docs/RewiredEditor.html#Settings">Enhanced Device Support</a> option required.) If you're developing for the PlayStation 4, see <a href="#ps4-gamepad-special-features">Using PS4 gamepad special features on PS4 platform</a> or <a href="#dualshock-4-special-features-common-interface">use the common interface to support both platforms simultaneously</a>. (* Special features are only supported on OSX via wired USB connection.)</p>
+  <p>The Sony DualShock 4 supports vibration, gyro/accelerometer, touchpad, and changing the light color on Windows Standalone and OSX* only at present (<a href="http://guavaman.com/projects/rewired/docs/RewiredEditor.html#Settings">Enhanced Device Support</a> option required.) If you're developing for the PlayStation 4, see the PS4 plugin documentation or <a href="#dualshock-4-special-features-common-interface">use the common interface to support both platforms simultaneously</a>. (* Special features are only supported on OSX via wired USB connection.)</p>
 <p>The special features of this controller are accessible through the <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_ControllerExtensions_DualShock4Extension.htm">ControllerExtensions.DualShock4Extension</a> class.</p>
 <p><a href="Examples.html#dualshock-4-special-features">Also see the Dual Shock 4 Special Features example.</a></p>
 <p>An example on how to use this class is shown below:</p>
@@ -2688,100 +2690,48 @@ class XBoxOneTest {
                 joystick.SetVibration(0, 1.0f); <span class="comment">// set first motor to full value</span>
             }<br />        }
     }
-}</pre>&nbsp;
-<hr />
-<h3><a name="ps4-gamepad-special-features" id="ps4-gamepad-special-features"></a>Using PS4 gamepad special features on PS4 platform</h3>
-<p>Special controller features of the PS4 gamepad such as vibration, gyro, accelerometer, touchpad, and light color can be accessed via the <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Platforms_PS4_PS4GamepadExtension.htm">PS4GamepadExtension</a> class available in the <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Joystick.htm">Joystick</a> class as seen in the example below.  Note that the platform input source must be set to Native and Disable Native Input must be set to false or no special features will be available.</p>
-<p>If you want to use the same code on desktop platforms and the PS4, you can <a href="#dualshock-4-special-features-common-interface">use the common interface instead</a> to access many of the controller's features.</p>
-<p><a href="Examples.html#dualshock-4-special-features">Also see the Dual Shock 4 Special Features example.</a></p>
-<pre class="code">using Rewired;
-using Rewired.Platforms.PS4;
-
-class PS4Test {
-
-  <span class="comment">// Getting and setting various values on all PS4 gamepads assigned to this Player</span>
-  public void TestPS4(Player player) {
-
-<span class="comment">    // Loop through all Joysticks assigned to this Player</span>
-    foreach(Joystick joystick in player.controllers.Joysticks) {
-
-      <span class="comment">// Get the PS4 Gamepad Extension from the Joystick</span>
-      var ext = joystick.GetExtension&lt;PS4GamepadExtension&gt;();
-      if(ext == null) continue; <span class="comment">// this is not a PS4 gamepad, skip it</span>
-
-      <span class="comment">// Get the accelerometer value</span>
-      Vector3 accelerometer = ext.GetAccelerometerValue();
-
-      <span class="comment">// Get the gyroscope value</span>
-      Vector3 gyro = ext.GetLastGyroscopeValue();
-
-      <span class="comment">// Get the controller orientation</span>
-      Quaternion orientation = ext.GetOrientation();
-
-      <span class="comment">// Get the touch positions for both fingers</span>
-      bool touch1isTouching, touch2isTouching;
-      Vector2 touch1Pos, touch2Pos;
-      touch1isTouching = ext.GetTouchPosition(0, out touch1Pos);
-      touch2isTouching = ext.GetTouchPosition(1, out touch2Pos);
-
-      <span class="comment">// Get/Set vibration
-      // Note: Vibration can also be set in a generic way through Joystick.SetVibration</span>
-      float vibration = ext.GetVibration(PS4GamepadMotorType.WeakMotor);
-      ext.SetVibration(PS4GamepadMotorType.StrongMotor, 1.0f); <span class="comment">// set vibration on a single motor by type</span>
-      ext.SetVibration(1.0f, 1.0f); <span class="comment">// set vibration on both motors simultaneously</span>
-      ext.StopVibration(); <span class="comment">// stop all vibration</span>
-
-      <span class="comment">// Set the light color</span>
-      ext.SetLightColor(new Color(1.0f, 1.0f, 0.0f, 0.5f)); <span class="comment">// alpha is multiplied by rgb to get final value</span>
-
-      <span class="comment">// Reset the light color</span>
-      ext.ResetLight();
-    }
-  }
 }</pre>
 <p>&nbsp;</p>
 <hr />
-<h3><a name="ps4-aim-special-features" id="ps4-aim-special-features"></a>Using PS4 Aim Controller special features on PS4 platform</h3>
-<p>Special controller features of the PS4 Aim Controller such as vibration, gyro, accelerometer, and light color can be accessed via the <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Platforms_PS4_PS4AimExtension.htm">PS4AimExtension</a> class available in the <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Joystick.htm">Joystick</a> class as seen in the example below.  Note that the platform input source must be set to Native and Disable Native Input must be set to false or no special features will be available.</p>
-<pre class="code">using Rewired;
-using Rewired.Platforms.PS4;
-
-class PS4Test {
-
-  <span class="comment">// Getting and setting various values on all PS4 Aim Controllers assigned to this Player</span>
-  public void TestPS4(Player player) {
-
-<span class="comment">    // Loop through all Joysticks assigned to this Player</span>
-    foreach(Joystick joystick in player.controllers.Joysticks) {
-
-      <span class="comment">// Get the PS4 Aim Extension from the Joystick</span>
-      var ext = joystick.GetExtension&lt;PS4AimExtension&gt;();
-      if(ext == null) continue; <span class="comment">// this is not a PS4 Aim Controller, skip it</span>
-
-      <span class="comment">// Get the accelerometer value</span>
-      Vector3 accelerometer = ext.GetAccelerometerValue();
-
-      <span class="comment">// Get the gyroscope value</span>
-      Vector3 gyro = ext.GetLastGyroscopeValue();
-
-      <span class="comment">// Get the controller orientation</span>
-      Quaternion orientation = ext.GetOrientation();
-
-      <span class="comment">// Get/Set vibration
-      // Note: Vibration can also be set in a generic way through Joystick.SetVibration</span>
-      float vibration = ext.GetVibration(PS4AimMotorType.WeakMotor);
-      ext.SetVibration(PS4AimMotorType.StrongMotor, 1.0f); <span class="comment">// set vibration on a single motor by type</span>
-      ext.SetVibration(1.0f, 1.0f); <span class="comment">// set vibration on both motors simultaneously</span>
-      ext.StopVibration(); <span class="comment">// stop all vibration</span>
-
-      <span class="comment">// Set the light color</span>
-      ext.SetLightColor(new Color(1.0f, 1.0f, 0.0f, 0.5f)); <span class="comment">// alpha is multiplied by rgb to get final value</span>
-
-      <span class="comment">// Reset the light color</span>
-      ext.ResetLight();
-    }
-  }
-}</pre>
+<h4><a name="apple-game-controller-framework" id="apple-game-controller-framework"></a>Apple&nbsp;Game Controller Framework special features</h4>
+<p>If the Apple Game Controller Framework input source is being used on the platform, certain features are exposed through the API.</p>
+<ul>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Platforms_Apple_GameController_GCControllerInput.htm">GCControllerInput</a> - Provides access to input-related methods and settings at runtime.</li>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/Properties_T_Rewired_Platforms_Apple_GameController_GCControllerInput_ControllerAssignment.htm">GCControllerInput.ControllerAssignment</a> - Provides access to controller assignment-related settings at runtime.</li>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/Properties_T_Rewired_Platforms_Apple_GameController_GCControllerExtension.htm">GCControllerExtension</a> - Allows access to controller-specific functions.</li>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/Properties_T_Rewired_Platforms_Apple_GameController_GCControllerDualShock4Extension.htm">GCControllerDualShock4Extension</a> - Allows access to controller-specific functions for the Sony Dual Shock 4 controller.</li>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/Properties_T_Rewired_Platforms_Apple_GameController_GCControllerDualSenseExtension.htm">GCControllerDualSenseExtension</a> - Allows access to controller-specific functions for the Sony Dual Sense controller.</li>
+  </ul>
+<p><strong>General Usage</strong></p>
+<p>Code that makes use of the Game Controller Framework should be enclosed in an #if directive for the specific build targets because these functions are not included on build targets that do not support the Game Controller Framework:</p>
+<pre class="code">#if UNITY_OSX
+    <span class="comment">// Some GCController specific code</span>
+    GCControllerExtension gcControllerExtension = controller.GetExtension&lt;GCControllerExtension&gt;();
+#endif</pre>
+<p>All functions are in the namespace Rewired.Platforms.Apple.GameController. Add this in a using statement which is encloded in an #if directive for the specific build targets.</p>
+<pre class="code">#if UNITY_OSX
+    using Rewired.Platforms.Apple.GameController;
+#endif</pre>
+<p><strong>Controller Extension</strong></p>
+<p>The <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/Properties_T_Rewired_Platforms_Apple_GameController_GCControllerExtension.htm">GCControllerExtension</a> exposes information specific to the Game Controller Framework. Some examples include:</p>
+<ul>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/M_Rewired_Platforms_Apple_GameController_GCControllerExtension_GetElementUnmappedLocalizedName.htm">nativePlayerIndex</a> - Gets the native player index. This corresponds to playerIndex in the Game Controller framework. This is only useful for direct interaction with the Game Controller framework.</li>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/M_Rewired_Platforms_Apple_GameController_GCControllerExtension_GetElementUnmappedLocalizedName.htm">nativeDevicePointer</a> - Gets the native pointer to the GCController object. This is only useful for direct interaction with the Game Controller framework. If the pointer is unavailable or invalid, returns IntPtr.Zero.</li>
+</ul>
+<p><strong>Game Controller Framework Labels and Symbols</strong></p>
+<p>The GCControllerExtension exposes functions to look up  Game Controller Framework labels and symbols for controller elements. This matters because the Game Controller Framework has the ability to remap elements on the controller at the system level. Rewired was never designed to work with a system where controller elements can change in identity -- for example, the B button on the controller becomes the Y button because the user remapped it in the OS. This goes against the basic design of Rewired's controller recognition system which must be able to identify controller elements based on a pre-defined manually-created controller definition. To address this discrepancy, functions are exposed to get the Game Controller Framework element identifying information that corresponds to a Rewired Controller Element Identifier. The Game Controller Framework provides  unmapped and remapped element label strings and unmapped and remapped element symbol strings. This is useful if you need to display the system-remapped glyph for a controller element to the user for example. The string values come from the Game Controller Framework, so refer to Apple's documentation for information about these strings and how to use them.</p>
+<ul>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/M_Rewired_Platforms_Apple_GameController_GCControllerExtension_GetElementSfSymbolsName.htm">GetElementSfSymbolsName</a></li>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/M_Rewired_Platforms_Apple_GameController_GCControllerExtension_GetElementUnmappedLocalizedName.htm">GetElementUnmappedSfSymbolsName</a></li>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/M_Rewired_Platforms_Apple_GameController_GCControllerExtension_GetElementLocalizedName.htm">GetElementLocalizedName</a></li>
+  <li><a href="http://guavaman.com/projects/rewired/docs/api-reference/html/M_Rewired_Platforms_Apple_GameController_GCControllerExtension_GetElementUnmappedLocalizedName.htm">GetElementUnmappedLocalizedName</a></li>
+</ul>
+<p><strong>Game Controller Framework Player</strong></p>
+<p>The Apple Game Controller Framework has its own concept of a player. Each player has an index. This is optional. If you want to use Apple's player system and you want Rewired's Players to be associated to specific Game Controller Framework player indices, you can create Rewired to GCController player association mappings using <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/Properties_T_Rewired_Platforms_Apple_GameController_GCControllerInput_ControllerAssignment.htm">GCControllerInput.ControllerAssignment</a>.</p>
+<p>By default, if Joystick Auto-Assignment is enabled and Settings -&gt; OSX -&gt; Assign Joysticks by System Player Id is enabled, Rewired will create a 1:1 Rewired Player to GCController player association by index automatically. This can be modified through <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/Properties_T_Rewired_Platforms_Apple_GameController_GCControllerInput_ControllerAssignment.htm">GCControllerInput.ControllerAssignment</a>.</p>
+<p>NOTE: This feature only applies to devices handled by the Apple Game Controller Framework. It does not apply to HID devices handled by IO Kit or any other input source. On OSX, this feature works best when the Primary Input Source is set to Game Controller and not Native + Use Game Controller Framework. This is because the Native input source uses I/O Kit and will include HID devices not supported by Game Controller Framework, and these devices do not have a GCController player index associated with them.</p>
+<p><strong>Known Issues</strong></p>
+<p>Apple's Game Controller Framework has a number of serious issues. See <a href="KnownIssues.html#osx-gccontroller-vibration-connection-bug">Known Issues</a> for more information.</p>
 <p>&nbsp;</p>
 <hr />
 <h3><a name="asmdef-files" id="asmdef-files"></a>Using asmdef files with Rewired</h3>

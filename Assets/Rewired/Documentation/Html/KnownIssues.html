@@ -153,6 +153,7 @@
     </ul>
     <h3><a href="#windows">Windows:</a></h3>
     <ul>
+      <li><a href="#windows-xbox-series-x-dont-work-out-of-focus">Windows Standalone: Xbox Series S/X controllers do not work when application is out of focus when Use XInput is disabled</a>.</li>
       <li><a href="#windows-editor-keyboard-keys-stuck-raw-input">Windows Editor: Keyboard keys sticking for the same duration they were pressed after being released</a></li>
       <li><a href="#windows-10-second-stall">Windows Standalone: Extra 10 second stall when pressing Play in the Unity editor and when running a build</a></li>
       <li><a href="#windows-standalone-il2cpp">Windows Standalone, IL2CPP: Rewired falls back to Unity input</a></li>
@@ -185,11 +186,17 @@
       <li><a href="#uwp-shift-keys">Windows 10 Universal: Left Shift is activated when Right Shift is pressed</a></li>
       <li><a href="#uwp-net-550-reference-rewriter-error">Windows 10 Universal .NET: UnityException: Failed to run reference rewriter error on Unity 5.5.0, 5.5.1</a></li>
     </ul>
-    <h3><a href="#osx">OSX:</a></h3>
+    <h3><a href="#osx">MacOS:</a></h3>
     <ul>
       <li><a href="#osx-apple-silicon-crash">OSX, Apple Silicon: Build crashes when a controller is connected</a></li>
       <li><a href="#osx-standalone-il2cpp">OSX, IL2CPP: Rewired falls back to Unity input</a></li>
       <li><a href="#osx-net46-initialization-exception">OSX, .NET 4.6 experimental backend: Throws exception on initialization in Unity 2017.1 - Unity 2017.3</a></li>
+      <li><a href="#osx-game-controller-framework">MacOS: Game Controller Framework</a>
+        <ul>
+          <li><a href="#osx-gccontroller-vibration-connection-bug">MacOS, Game Controller Framework: Controller vibration stops working on some controllers when another controller is connected or disconnected</a></li>
+          <li><a href="#osx-gccontroller-sony-controller-problems">MacOS, Game Controller Framework: Sony Dual Shock 4 and Dual Sense controller issues</a></li>
+    </ul>
+      </li>
       </ul>
     <h3><a href="#linux">Linux:</a></h3>
     <ul>
@@ -227,17 +234,12 @@
     <ul>
       <li><a href="#xbox-one-controller-connections-error">Controller connections and disconnections do not work</a></li>
     </ul>
-<h3><a href="#ouya">Ouya:</a></h3>
-    <ul>
-      <li><a href="#ouya-sdk-unity-input-joysticks-do-not-work">Ouya SDK:  Unity input  joysticks do not work when the Ouya SDK is installed</a></li>
-      <li><a href="#ouya-sdk-4-controller-limit">Ouya SDK: Cannot use more than 4 controllers</a></li>
-    </ul>
-    <h3><a href="#sdl2">SDL2:</a></h3>
+<h3><a href="#sdl2">SDL2:</a></h3>
     <ul>
       <li><a href="#sdl2-osx-editor-haptic-feedback-not-supported">OSX - Editor does not support haptic feedback</a></li>
       <li><a href="#sdl2-osx-xbox-360-controller-no-vibration">OSX - Xbox 360 Controller does not support vibration</a></li>
       <li><a href="#sdl2-windows-xbox-360-vibration-motors">Windows - XBox 360 Controller does not allow independent control of vibration motors</a></li>
-      </ul>
+    </ul>
     <h3><a href="#steam">Steam:</a></h3>
     <ul>
       <li><a href="#steam-windows-tab-shift-keys-stuck-overlay">Windows - Tab and Shift keys get stuck on after opening Steam overlay using the keyboard</a></li>
@@ -321,6 +323,10 @@ On Windows, another easier way to disable the optimizer is to add an   environme
 <p>&nbsp;</p>
 <h2><a name="windows" id="windows"></a>Windows</h2>
 <p>&nbsp;</p>
+<h3><a name="windows-xbox-series-x-dont-work-out-of-focus" id="windows-xbox-series-x-dont-work-out-of-focus"></a>Windows Standalone: Xbox Series S/X controllers do not work when application is out of focus when Use XInput is disabled</h3>
+<p>Xbox Series S/X controllers do not work when the application is out of focus. This is a problem at the driver level and is not an issue with Rewired. The driver does not send any Raw Input events to the application when it is out of focus even when explicitly told to do so when registering for Raw Input events. This affects Raw Input, Direct Input, and Unity input sources. This does not affect XInput.</p>
+<h3>&nbsp;</h3>
+<hr />
 <h3><a name="windows-editor-keyboard-keys-stuck-raw-input" id="windows-editor-keyboard-keys-stuck-raw-input"></a>Windows Editor: Keyboard keys sticking for the same duration they were pressed after being released</h3>
 <p><strong>Update:</strong> According to Unity, this bug will be fixed in Unity 2019.4.0f1.</p>
 <ol>
@@ -606,7 +612,7 @@ Catastrophic failure while running rrw: Mono.Cecil.AssemblyResolutionException: 
 <p>&nbsp;</p>
 <hr />
 <p>&nbsp;</p>
-<h2><a name="osx" id="osx"></a>OSX:</h2>
+<h2><a name="osx" id="osx"></a>MacOS:</h2>
 <p>&nbsp;</p>
 <h3><a name="osx-apple-silicon-crash" id="osx-apple-silicon-crash"></a>OSX, Apple Silicon: Build crashes when a controller is connected</h3>
 <p>Unity has a bug that causes a crash when any native code calls back into managed code. This cannot be fixed or worked around. Only Unity can fix this bug and Rewired's native input cannot function without this feature. The only way to get around this issue is to build to IL2CPP.</p>
@@ -633,6 +639,25 @@ Catastrophic failure while running rrw: Mono.Cecil.AssemblyResolutionException: 
   4.6 .NET backend. The fact that older versions looked like they worked was 
   just a fluke due to the unrelated exception preventing native input from being initialized.</p>
 <p><em>Beta versions and experimental features of Unity are not supported by Rewired.</em></p>
+<p>&nbsp;</p>
+<hr />
+<h2><a name="osx-game-controller-framework" id="osx-game-controller-framework"></a>MacOS: Game Controller Framework</h2>
+<p>&nbsp;</p>
+<h3><a name="osx-gccontroller-vibration-connection-bug" id="osx-gccontroller-vibration-connection-bug"></a>MacOS, Game Controller Framework: Controller vibration stops working on some controllers when another controller is connected or disconnected</h3>
+<p>When using the Game Controller Framework, controller vibration can stop working randomly when any Game Controller Framework compatible controller is connected to or disconnected from the system. This is a bug on Apple's end and cannot be fixed by Rewired. Once the vibration motors stop working on the connected controller(s), the only way to make them work again is to disconnect and reconnect the controller.</p>
+<p>&nbsp;</p>
+<hr />
+<h3><a name="osx-gccontroller-sony-controller-problems" id="osx-gccontroller-sony-controller-problems"></a>MacOS, Game Controller Framework: Sony Dual Shock 4 and Dual Sense controller issues</h3>
+<p>Based on my testing, there are numerous issues with the Dual Shock 4 and Dual Sense controllers when using the Game Controller Framework. These issues are not caused by Rewired but by Apple's Game Controller Framework. There are no software fixes possible.</p>
+<p>Issues I have experienced when testing on an M1 Mac connecting wirelessly:</p>
+<ul>
+  <li>The entire system stalls during connection of Dual Sense controller for several seconds.</li>
+  <li>Some or all special controller features may or may not work, or may stop working.</li>
+  <li>Light color may not change when calling SetLightColor.</li>
+  <li>Acceleration and/or gyroscope values may not work.</li>
+  <li>Vibration motors may not work or may stop working.</li>
+</ul>
+<p>The only workaround I have found is to unpair and repair the controller as many times as it takes until the controller starts working correctly. Simply disconnecting and reconnecting the controller does not seem to help. Only unpairing and repairing appears to make a difference.</p>
 <p>&nbsp;</p>
 <hr />
 <p>&nbsp;</p>
@@ -957,18 +982,6 @@ public class RewiredCustomController_AndroidRemote : MonoBehaviour {
 <p>There have been reports of controller connections and disconnections not working on Xbox One builds in Unity 2017.3. This issue is not with Rewired but with the underlying Unity Xbox One input event used to detect controller connections and disconnections. Apparently, Unity's Build and Run with Push method makes any
   build consecutive to the   first one exhibit broken controller connections. Changing build method to   Package seems to make the game build properly.<br />
 </p>
-<p>&nbsp;</p>
-<hr />
-<p>&nbsp;</p>
-<h2><a name="ouya" id="ouya"></a>Ouya:</h2>
-<p>&nbsp;</p>
-<h3><a name="ouya-sdk-unity-input-joysticks-do-not-work" id="ouya-4-controller-limit2"></a>Ouya SDK: Unity input joysticks do not work when the Ouya SDK is installed</h3>
-<p>When the Ouya Everywhere SDK is installed in the project, it interferes with Unity's input system on Android builds preventing any joystick axes or buttons from working. At present, there is no known solution to make Unity input work on Android when the Ouya SDK is installed. However, Rewired includes support for the Ouya SDK which will allow you to use the Ouya SDK for joystick input. See the <a href="SpecialPlatformSupport.html#ouya">Special Platform Support - Ouya</a> for installation instructions.</p>
-<p>&nbsp;</p>
-<hr />
-<h3><a name="ouya-sdk-4-controller-limit" id="ouya-sdk-4-controller-limit"></a>Ouya SDK: Cannot use more than 4 controllers</h3>
-<p>When using the Ouya Everywhere SDK for joystick support, you cannot use more than 4 controllers. If you attach additional controllers beyond the 4-controller limit, the controller will be assigned to one of the same id's as another controller and both will control the same player. This is a limitation of the Ouya SDK, not Rewired.</p>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <hr />
 <p>&nbsp;</p>

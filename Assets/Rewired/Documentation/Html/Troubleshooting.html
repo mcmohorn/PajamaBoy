@@ -137,7 +137,7 @@
     	<div class="main-body">
 	        <div class="logo"><a href="http://guavaman.com/projects/rewired" title="Rewired"><img src="files/images/rewired-logo.png" width="173" height="139" alt="Rewired" /></a></div>
                      
-            <h1>
+          <h1>
             <!-- InstanceBeginEditable name="PageHeader" -->Troubleshooting <!-- InstanceEndEditable -->
             </h1>
             
@@ -172,6 +172,7 @@
     <ul>
       <li><a href="#wrong-rewired-version-installed">Error: The version of Rewired installed  was not designed for Unity X. Please install Rewired for Unity X.</a></li>
       <li><a href="#installation-problems-and-compiler-errors">Rewired does not install or has compiler errors immediately after installation</a></li>
+      <li><a href="#compiler-errors-after-upgrading-unity">Compiler errors after upgrading Unity</a></li>
       <li><a href="#compiler-errors-name-clashes">Compiler errors with Rewired classes such as Rewired.Player</a></li>
       <li><a href="#null-reference-during-recompile">Null reference exception when recompiling scripts in the editor at runtime</a></li>
       <li><a href="#compile-errors-ps4-xbone">Compile errors in PS4, XBox One, WiiU, or other special platforms</a></li>
@@ -217,12 +218,7 @@
   <li><a href="#xbox-one-controller-events-dont-work">XBox One: Controller connect/disconnect events do not work</a></li>
   <li><a href="#xbox-one-controller-on-dev-pc">XBox One: Controller appearing on console when connected to development PC</a></li>
   </ul>
-<h3><a href="#ps4">Playstation 4:</a></h3>
-<ul>
-  <li><a href="#ps4-compiler-error-loggedinuser-aimhandle">PS4: Compiler error 
-    CS1061:   'LoggedInUser' does not contain a definition for 'aimHandle'</a></li>
-  <li><a href="#ps4-touchpad-mouse">PS4: Gamepad touchpad generates mouse input</a></li>
-</ul>
+
 <h3><a href="#steam">Steam:</a></h3>
     <ul>
       <li><a href="#steam">Important information about Steam</a></li>
@@ -380,7 +376,8 @@ foreach(var p in ReInput.players.Players) {
     <p><strong><a name="controller-doesnt-work-more-reasons" id="controller-doesnt-work-more-reasons"></a>More reasons why your controller may appear not to work:</strong></p>
     <ul>
       <li>You have multiple controllers connected, one Player, and have left the default <a href="http://guavaman.com/projects/rewired/docs/RewiredEditor.html#Settings">Joystick Auto-Assignment Settings in the Rewired input manager</a>: 
-        Based on the default settings, Rewired will assign only one controller per-Player. If multiple controllers are present, only one will be assigned to each Player. If you only have one Player, the second controller will be left unassigned. In order to allow auto-assignment of multiple Joysticks to the same Player, Max Joysticks Per Player must be raised to a value greater than 1.  <a href="Controllers.html">See this page for information on Controllers</a>.    </li>
+        Based on the default settings, Rewired will assign only one controller per-Player. If multiple controllers are present, only one will be assigned to each Player. If you only have one Player, the second controller will be left unassigned. In order to allow auto-assignment of multiple Joysticks to the same Player, Max Joysticks Per Player must be raised to a value greater than 1.  <a href="Controllers.html">See this page for information on Controllers</a>.</li>
+      <li><strong>Steam</strong>  is very frequently the cause of inexplicable controller input problems such as controllers not appearing or not producing any input. Issues caused by Steam are notoriously difficult to diagnose because few people ever even mention they are using Steam when contacting support for help. If you are using Steam in your project, or in some cases, if Steam is even open in the background during development, it has a major impact on input devices visible to the application. <a href="#steam">See this for important information on Steam</a>.</li>
     </ul>
     <p><strong>How to figure out why it's not working:</strong></p>
     <p>Use the <a href="#debug-information">Debug Information   tool</a> to see exactly what is happening in real-time. When &ldquo;joystick input doesn&rsquo;t work&rdquo; in Rewired, this can mean many different 
@@ -610,13 +607,32 @@ things. All of this information is visible in the Debug Information tool:</p>
 <p>&nbsp;</p>
 <hr />
 <h3><a name="installation-problems-and-compiler-errors" id="installation-problems-and-compiler-errors"></a>Rewired does not install or has compiler errors immediately after installation</h3>
-<p>A very common error users make is to install a version of Rewired built for a newer major version of Unity in an older version of Unity. This happens because of Unity’s very poor choice to save Asset Store   downloads from the Unity 5, 2017, 2018, 2019, 2020, and 2021 branches of Unity in the exact same folder. If you download the Unity 2018 version of Rewired from the Asset   Store in Unity 2018, then go back to Unity 2017 and press Install without downloading Rewired again, Unity   will install the 2017 version of Rewired which contains asset files that were   saved in Unity 2018 and are therefore incompatible with 2017. Download Rewired again from the Unity Asset Store in Unity 2017 before installing Rewired and you   won’t have any issues. You will need to delete the download before you can download it again. <a href="#wrong-rewired-version-installed">See this for  download file locations</a>.</p>
-<p>You will get the following compiler error if you install Rewired for Unity 2018 in Unity 2017:</p>
+<p>A very common error users make is to install a version of Rewired built for a newer major version of Unity in an older version of Unity. This happens because of Unity’s very poor choice to save Asset Store   / Package Manager downloads from the Unity 5, 2017, 2018, 2019, 2020, and 2021 branches of Unity in the exact same folder. If you download the Unity 2021 version of Rewired from the Package Managerin Unity 2021, then go back to Unity 2020 and press Install without downloading Rewired again, Unity   will install the 2021 version of Rewired which contains asset files and code that was built for Unity 2021 and is therefore incompatible with 2020. Download Rewired again from the Package Manager in Unity 2020 before installing Rewired and you   won’t have any issues. You will need to delete the download before you can download it again. <a href="#wrong-rewired-version-installed">See this for  download file locations</a>.</p>
+<p>Since Unity 2021, it is also possible to get errors if you install a version of Rewired built for an older version of Unity in a newer version of Unity. Rewired for Unity 2020 is incompatible with Unity 2021 and will throw errors on installation, or when you upgrade a project from Unity 2020 to Unity 2021.</p>
+<p><strong>You will get the following compiler error if you install Rewired for Unity 2018 in Unity 2017:</strong></p>
 <p>Assets/Rewired/Internal/Scripts/Misc/ExternalTools.cs
   (80,18):   error CS0535: `Rewired.Utils.ExternalTools' does not
   implement interface   member 'Rewired.Utils.Interfaces.IExternalTools.PS4Input_GetSpecialControllerInformation
-  (int,   int, object )'`<br />
+  (int,   int, object )'`</p>
+<p><strong>You will get the following compiler error if you install Rewired for Unity 2021 in Unity 2020:</strong></p>
+<p>Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs(84,34): error CS0535: 'ExternalTools' does not implement interface member 'IExternalTools.WindowsStandalone_ForwardRawInput(IntPtr, IntPtr, uint, IntPtr, uint)'</p>
+<p><strong>You will get the following compiler error if you install Rewired for Unity 2020 in Unity 2021:</strong></p>
+<p>Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs(816,13): error
+  CS0234: The type or namespace name 'Windows' does not exist in the
+  namespace 'Rewired.Internal' (are you missing an assembly reference?)</p>
+<p>There are likely more different errors as well, and the exact text of this errors will change in time as code changes.</p>
+<p>Regardless, if you see compiler errors immediately after installing Rewired, you are using the wrong version of Rewired for the version of Unity you are using.<br />
 </p>
+<p>&nbsp;</p>
+<hr />
+<h3><a name="compiler-errors-after-upgrading-unity" id="compiler-errors-after-upgrading-unity"></a>Compiler errors after upgrading Unity</h3>
+<p>This is just another variation of <a href="#installation-problems-and-compiler-errors">this problem</a>. You are using a version of Rewired that was built for a different version of Unity and it is not compatible with it.</p>
+<p>Some possible errors that may be shown:</p>
+<p>Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs(816,13): error
+  CS0234: The type or namespace name 'Windows' does not exist in the
+  namespace 'Rewired.Internal' (are you missing an assembly reference?)</p>
+<p>Install the correct branch of Rewired for the major version of Unity you are using.</p>
+<p>Because of poor Asset Store / Package Manager design with regard to managing version-specific downloads of assets, you will likely have to <a href="#wrong-rewired-version-installed">clear the Asset Store / Package Manager cache</a> to get the correct version of Rewired to download.</p>
 <p>&nbsp;</p>
 <hr />
 <h3><a name="compiler-errors-name-clashes" id="compiler-errors-name-clashes"></a>Compiler errors with Rewired classes such as Rewired.Player</h3>
@@ -970,39 +986,6 @@ Int64* args, IntPtr method)
 <hr />
 <h3><a name="xbox-one-controller-on-dev-pc" id="xbox-one-controller-on-dev-pc"></a>XBox One: Controller appearing on console when connected to development PC</h3>
 <p>If an XInput-compatible controller is attached to the development PC, the controller will be detected by the Xbox One console and used. This is not Rewired's doing and the behavior cannot be disabled. This is a feature of the Microsoft Xbox One SDK.</p>
-<p>&nbsp;</p>
-<hr />
-<p>&nbsp;</p>
-<h2><a name="ps4" id="ps4"></a>Playstation 4</h2>
-<p>&nbsp;</p>
-<h3><a name="ps4-compiler-error-loggedinuser-aimhandle" id="ps4-compiler-error-loggedinuser-aimhandle"></a>PS4: Compiler error
-  CS1061:   'LoggedInUser' does not contain a definition for 'aimHandle'</h3>
-<p><strong>Error message:</strong><br />
-  Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs(348,21): error
-  CS1061:   'LoggedInUser' does not contain a definition for 'aimHandle'
-  and no   accessible extension method 'aimHandle' accepting a first
-  argument of type   'LoggedInUser' could be found (are you missing a
-  using directive or an   assembly reference?)</p>
-<p><strong>Cause:</strong><br />
-  You have Rewired for Unity 5 or  Unity 2017 installed in Unity 2018. This is not supported.</p>
-<p><strong>Solution:</strong><br />
-  Install Rewired for Unity 2018.</p>
-<p><strong>Additional Information:</strong><br />
-  <a href="#wrong-rewired-version-installed">See this for information about downloading the correct version of Rewired from the Unity Asset Store.</a><br />
-</p>
-<p>&nbsp;</p>
-<hr />
-<h3><a name="ps4-touchpad-mouse" id="ps4-touchpad-mouse"></a>PS4: Gamepad touchpad generates mouse input</h3>
-<p>This is coming from Unity's input system. Rewired uses UnityEngine.Input and   UnityEngine.PS4.PS4Input on the PS4 
-  platform for all input (<a href="http://guavaman.com/projects/rewired/docs/Overview.html#tested-platforms">See Tested Platforms.</a>) Rewired cannot disable this. <br />
-  <br />
-  There's   no confirmed way to disable this functionality in Unity. The only possible method that might work is setting <a href="https://docs.unity3d.com/ScriptReference/Input-simulateMouseWithTouches.html" target="_blank">UnityEngine.Input.simulateMouseWithTouches</a> to false.<br />
-  <br />
-  You   can also easily disable Mouse input on the PS4 platform through Rewired so the mouse data coming form Unity isn't processed:
-<pre class="code">#if UNITY_PS4<br />  ReInput.controllers.Mouse.enabled = false;
-#endif<br /></pre>
-  <a href="HowTos.html#assigning-controllers">Or   unassign the mouse from the Players.</a><br />
-  <a href="HowTos.html#enabling-disabling-controller-maps">Or disable the Player's Mouse Maps.</a>
 <p>&nbsp;</p>
 <hr />
 <p>&nbsp;</p>

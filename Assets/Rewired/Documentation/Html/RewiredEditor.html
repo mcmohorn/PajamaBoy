@@ -213,12 +213,16 @@
     <td valign="top">Disable keyboard input on all platforms? Disabling this can improve performance slightly.</td>
   </tr>
   <tr>
+    <td valign="top">Disable Mouse</td>
+    <td valign="top">Disable mouse input on all platforms? Disabling this can improve performance slightly.</td>
+  </tr>
+  <tr>
     <td valign="top"><a name="settings-ignore-input-when-app-not-in-focus" id="settings-ignore-input-when-app-not-in-focus"></a>Ignore Input When App Not In Focus</td>
     <td valign="top"><p>Ignores input if the application is not in focus. This setting has no effect on some platforms.</p>
       <p>NOTE: Disabling this does not guarantee that input will be processed when the application is out of focus. Whether input is received by the application or not is dependent on A) the input device type B) the current platform C) the input source(s) being used.</p></td>
   </tr>
   <tr>
-    <td valign="top"><strong>Windows:</strong></td>
+    <td valign="top"><strong><a name="settings-windows" id="settings-windows"></a>Windows:</strong></td>
     <td valign="top">&nbsp;</td>
   </tr>
   <tr>
@@ -256,15 +260,26 @@
       <p>(Only available when Input Source is set to Raw Input.)</p></td>
   </tr>
   <tr>
-    <td valign="top"><strong>OSX:</strong></td>
+    <td valign="top"><strong><a name="settings-osx" id="settings-osx"></a>OSX:</strong></td>
     <td valign="top">&nbsp;</td>
   </tr>
   <tr>
     <td valign="top">Input Source</td>
     <td valign="top"><p>The primary input source for the OSX Standalone platform.</p>
       <p>Native - Use native input for the input source. This provides the best device support.</p>
+      <p>Game Controller - Use Apple Game Controller framework for the input source. This provides support only for devices supported by the Game Controller framework. This may not include all devices supported by the Native input source.</p>
       <p>SDL2 - Use SDL2 for the input source. May be required for Steam Streaming and Steam Controller support in OSX. This option requires the SDL2 runtime library to be installed. Note: SDL2 does not support as many devices as other native input sources.</p>
-      <p>Unity Input - Use Unity fallback input. </p></td>
+<p>Unity Input - Use Unity fallback input. </p></td>
+  </tr>
+  <tr>
+    <td valign="top"><a name="settings-osx-game-controller-framework" id="settings-osx-game-controller-framework"></a>Use Game Controller Framework</td>
+    <td valign="top"><p>Use the Apple Game Controller Framework for compatible devices.</p>
+      <p>(Only available when Input Source is set to Native.)</p></td>
+  </tr>
+  <tr>
+    <td valign="top"><a name="settings-osx-assign-joysticks-by-system-player-id" id="settings-osx-assign-joysticks-by-system-player-id"></a>Assign Joysticks by System Player Id</td>
+    <td valign="top"><p>If this option is enabled, joysticks will be assigned to Rewired Players based on the native player id assigned by the system. This option ensures that the joystick will match to the correct Rewired Player when auto-assigned. This option overrides some other joystick auto-assignment settings. More than one joystick will be assigned to a Player if multiple joysticks are found for that system player id.</p>
+      <p>NOTE: This option only applies to devices handled by the Apple Game Controller Framework. It does not apply to HID devices handled by IO Kit or any other input source.</p></td>
   </tr>
   <tr>
     <td valign="top"><a name="settings-osx-enhanced-device-support" id="settings-osx-enhanced-device-support"></a>Enhanced Device Support</td>
@@ -317,7 +332,7 @@
       <p>This option only applies to the Android platform.</p></td>
   </tr>
   <tr>
-    <td valign="top"><strong>Xbox One:</strong></td>
+    <td valign="top"><strong><a name="settings-xbone" id="settings-xbone"></a>Xbox One:</strong></td>
     <td valign="top">&nbsp;</td>
   </tr>
   <tr>
@@ -327,26 +342,16 @@
       <p>Unity Input - Use Unity fallback input.</p></td>
   </tr>
   <tr>
-    <td valign="top"><strong>PS4:</strong></td>
-    <td valign="top">&nbsp;</td>
-  </tr>
-  <tr>
-    <td valign="top">Input Source</td>
-    <td valign="top"><p>The primary input source for the PS4 platform.</p>
-      <p>Native - Use native input for the input source. This provides the best device support.</p>
-      <p>Unity Input - Use Unity fallback input.</p></td>
-  </tr>
-  <tr>
-    <td valign="top">Assign Joysticks by PS4 Joy Id</td>
-    <td valign="top">If this option is enabled, joysticks will be assigned to Rewired Players based on the PS4 joystick id assigned by the system. This option ensures that the PS4 joystick id will match to the Rewired Player when auto-assigned. This option overrides some other joystick auto-assignment settings. More than one joystick will be assigned to a Player if multiple joysticks are found for that PS4 player id.</td>
-  </tr>
-  <tr>
     <td valign="top"><strong>Each Platform:</strong></td>
     <td valign="top">Options here appear in all individual platform pages.</td>
   </tr>
   <tr>
     <td valign="top">Disable Keyboard</td>
     <td valign="top">Disable keyboard input on this platform? Disabling this can improve performance slightly.</td>
+  </tr>
+  <tr>
+    <td valign="top">Disable Mouse</td>
+    <td valign="top">Disable mouse input on this platform? Disabling this can improve performance slightly.</td>
   </tr>
   <tr>
     <td valign="top">Ignore Input When App Not In Focus</td>
@@ -386,7 +391,7 @@
     <td valign="top">&nbsp;</td>
   </tr>
   <tr>
-    <td valign="top"><strong>Global Settings:</strong></td>
+    <td valign="top"><strong><a name="settings-global-settings" id="settings-global-settings"></a>Global Settings:</strong></td>
     <td valign="top">&nbsp;</td>
   </tr>
   <tr>

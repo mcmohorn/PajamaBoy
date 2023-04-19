@@ -539,6 +539,16 @@ namespace Rewired.UI.ControlMapper {
                     int selectedMapCategoryIndex = System.Array.IndexOf<int>(mapCategoryIds, mapCategoryId.intValue);
                     if(selectedMapCategoryIndex < 0) continue;
 
+                    // Make sure Map Category is user assignable
+                    if(userData != null && mapCategoryId.intValue >= 0) {
+                        InputMapCategory mapCategory = userData.GetMapCategoryById(mapCategoryId.intValue);
+                        if(mapCategory != null) {
+                            if(!mapCategory.userAssignable) {
+                                EditorGUILayout.HelpBox("The selected Map Category is not user assignable and will not be displayed.", MessageType.Error);
+                            }
+                        }
+                    }
+
                     SerializedProperty actionListMode = mapSet.FindPropertyRelative("_actionListMode");
                     EditorGUILayout.PropertyField(actionListMode);
 
