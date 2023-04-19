@@ -460,6 +460,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 10
+      _name: Ability1
+      _type: 1
+      _descriptiveName: Ability 1
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -469,7 +478,7 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 00000000010000000700000006000000020000000300000005000000040000000800000009000000
+        actionIds: 000000000100000007000000060000000200000003000000050000000400000008000000090000000a000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -776,13 +785,24 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 10
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 101
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     mouseMaps: []
     customControllerMaps: []
     customControllers: []
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 2
-    actionIdCounter: 10
+    actionIdCounter: 11
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
@@ -1430,7 +1450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5857256867688493426, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6174758780806643022, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_Layer
@@ -1560,6 +1580,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 31
       objectReference: {fileID: 0}
+    - target: {fileID: 8796847002757578675, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 490e1c415378948939ccc77bd9b201f4, type: 3}
     - target: {fileID: 8808362142467094127, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_Layer
       value: 31
@@ -1671,6 +1695,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8896323812873760281, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
   m_PrefabInstance: {fileID: 1067186621}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1067186623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76330113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3e23cfdc814344b651f59d57e7017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 6a20c543a6e69498abb24e1edd797099, type: 3}
+  cooldownTime: 3
+  cooldown: 0
+  currentCooldown: 0
+  button: {fileID: 0}
+  inputButtonName: Ability1
+  animatorVariableName: isSuperJumping
+  player: {fileID: 0}
+  playerCanvas: {fileID: 0}
+  castTime: 0
+  jumpAngle: 45
+  jumpPower: 50
 --- !u!4 &1134303433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3899226868302452457, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}

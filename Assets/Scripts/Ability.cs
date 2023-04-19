@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Ability : MonoBehaviour
 {
+    [Tooltip("Icon to display ")] 
+    public Texture2D icon;
     [Tooltip("Cooldown time in seconds")] 
     public float cooldownTime;
     [HideInInspector]

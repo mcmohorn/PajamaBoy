@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Rewired;
 
 public class MyPlayerController : MonoBehaviour
@@ -19,7 +20,7 @@ public class MyPlayerController : MonoBehaviour
     public RectTransform menu;
 
     // standard unity characer movement things
-    private CharacterController controller;
+    public CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
 
@@ -33,6 +34,9 @@ public class MyPlayerController : MonoBehaviour
     public float jumpHeight = 3.0f;
 
     private float gravityValue = -9.81f;
+
+    private float abilityButtonSpacing = 50f;
+    private float abilityButtonSpacingFromBottom = 50f;
     
    
     public float turnSpeed; // (look sensitivity, accessed by camera controller)
@@ -74,16 +78,23 @@ public class MyPlayerController : MonoBehaviour
         abilities = gameObject.GetComponents<Ability>();
         Debug.Log("instantiating " + abilities.Length + " abilities");
 
-        // now instantiate AbilityButton prefabs in the players canvas
-        foreach (var ability in abilities)
+        // instantiate AbilityButton prefabs in the players canvas
+        for (int index = 0; index < abilities.Length; index++)
         {
+            var ability = abilities[index];
             ability.player = gameObject.GetComponent<MyPlayerController>();
             GameObject abilityButton = Instantiate(abilityButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            var abilityButtonWidth = abilityButton.GetComponent<RectTransform>().sizeDelta.x;
+            Vector3 offset = new Vector3((abilityButtonWidth + abilityButtonSpacing) * -1.0f*index, abilityButtonSpacingFromBottom, 0);
+            abilityButton.GetComponent<RectTransform>().localPosition += offset;
             abilityButton.transform.SetParent (mainCanvas.transform, false);
-
+            
             ability.button = abilityButton.GetComponent<AbilityButton>();
             ability.button.ability = ability;
             ability.button.timerText.text = "";
+            ability.button.abilityImage.texture = ability.icon;
+
+
         }
 
     }

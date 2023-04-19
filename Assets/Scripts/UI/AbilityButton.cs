@@ -9,13 +9,16 @@ public class AbilityButton : MonoBehaviour
     [HideInInspector]
     public Ability ability;
 
-    // public 
-
-    public Image abilityIcon;
+    public RawImage abilityImage;
 
     public Image ring;
 
     public TextMeshProUGUI timerText;
+
+    RawImage img;
+
+
+    
 
 
     // Update is called once per frame
@@ -23,10 +26,10 @@ public class AbilityButton : MonoBehaviour
     {
         if (ability.cooldown > 0) {
             timerText.text = Mathf.Floor(ability.cooldown) + "";
-            abilityIcon.gameObject.SetActive(false);
+            abilityImage.gameObject.SetActive(false);
             ring.fillAmount = (ability.cooldownTime - ability.cooldown) / ability.cooldownTime;
         } else {
-            abilityIcon.gameObject.SetActive(true);
+            abilityImage.gameObject.SetActive(true);
             timerText.text = "";
             ring.fillAmount = 1f;
         }
