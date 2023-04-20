@@ -226,9 +226,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   actionLookup: 0
-  actionName: Summon
+  actionName: 
   actionId: 0
-  notFoundSprite: {fileID: 21300032, guid: bec84854812e7fd40bb929c169fb3a1e, type: 3}
+  notFoundSprite: {fileID: 21300000, guid: 70e3ce8ad01f39248a3ea97a35bcf238, type: 3}
 --- !u!1 &4764014538277057356
 GameObject:
   m_ObjectHideFlags: 0

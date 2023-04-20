@@ -21,7 +21,7 @@ public class MyPlayerController : MonoBehaviour
 
     // standard unity characer movement things
     public CharacterController controller;
-    private Vector3 playerVelocity;
+    public Vector3 playerVelocity;
     private bool groundedPlayer;
 
     [Tooltip("How fast the player can move")]
@@ -33,7 +33,7 @@ public class MyPlayerController : MonoBehaviour
     [Tooltip("How high the player can jump")]
     public float jumpHeight = 3.0f;
 
-    private float gravityValue = -9.81f;
+    public float gravityValue = -9.81f;
 
     private float abilityButtonSpacing = 50f;
     private float abilityButtonSpacingFromBottom = 50f;
@@ -93,9 +93,10 @@ public class MyPlayerController : MonoBehaviour
             ability.button.ability = ability;
             ability.button.timerText.text = "";
             ability.button.abilityImage.texture = ability.icon;
+            ability.button.controlAction.actionName = ability.actionName;
+            // ability.button.controlAction.actionId = ability.actionId;
+            
 
-
-            ability.button.controlAction.actionName = ability.inputButtonName;
 
         }
 
@@ -185,6 +186,7 @@ public class MyPlayerController : MonoBehaviour
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
+            playerVelocity.z = 0f;
         }
 
         Vector3 move = new Vector3(moveVector.x, 0, moveVector.z);

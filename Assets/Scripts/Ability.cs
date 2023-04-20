@@ -19,7 +19,8 @@ public class Ability : MonoBehaviour
     public AbilityButton button;
 
     [Tooltip("The rewired action name that triggers this ability")]
-    public string inputButtonName;
+    public string actionName;
+    public int actionId;
 
     [Tooltip("The variable that updates in the animator")]
     public string animatorVariableName;
@@ -44,7 +45,7 @@ public class Ability : MonoBehaviour
             // Debug.Log("Player DNE");
         }
         if (player != null && player.player != null) {
-            action = player.player.GetButton(inputButtonName);
+            action = player.player.GetButton(actionName);
         }
         
     }

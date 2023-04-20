@@ -435,9 +435,12 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   mainCanvas: {fileID: 7702396055231960552}
   menu: {fileID: 1769804906542796978}
+  controller: {fileID: 0}
+  playerVelocity: {x: 0, y: 0, z: 0}
   playerSpeed: 4
   sprintMultiplier: 2
   jumpHeight: 3
+  gravityValue: -9.81
   turnSpeed: 0.01
   animator: {fileID: 0}
   abilityButtonPrefab: {fileID: 7042108166359216547, guid: efd13f0ecb3ed49078f4b2d9b063c606, type: 3}
@@ -492,11 +495,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77619a66d354343bdae2b65b94b9b0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 490e1c415378948939ccc77bd9b201f4, type: 3}
   cooldownTime: 4
   cooldown: 0
   currentCooldown: 0
   button: {fileID: 0}
   inputButtonName: Summon
+  actionId: 8
   animatorVariableName: isSummoning
   player: {fileID: 0}
   playerCanvas: {fileID: 0}

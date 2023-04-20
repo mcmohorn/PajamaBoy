@@ -21,10 +21,6 @@ public class AbilityButton : MonoBehaviour
     RawImage img;
 
 
-    
-
-
-    // Update is called once per frame
     void Update()
     {
         if (ability.cooldown > 0) {
