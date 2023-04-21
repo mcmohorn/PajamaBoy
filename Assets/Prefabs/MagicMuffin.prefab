@@ -115,6 +115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3317696800630772620, guid: b14d29c8e4e5f472c8c37a80f5c1851a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bce6bcf5a04394eeca75fee121e3dda5, type: 2}
     - target: {fileID: 919132149155446097, guid: b14d29c8e4e5f472c8c37a80f5c1851a, type: 3}
       propertyPath: m_Name
       value: muffin

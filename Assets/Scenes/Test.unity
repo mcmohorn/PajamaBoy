@@ -1592,8 +1592,8 @@ MonoBehaviour:
   castTime: 0
   muffinPrefab: {fileID: 7721196602010912190, guid: 807c78454e697413384ef497ff8c409b, type: 3}
   tossTime: 0.5
-  throwForceForward: 10
-  throwForceUp: 10
+  throwForceForward: 100
+  throwForceUp: 100
   muffinLifetime: 5
 --- !u!4 &1069704368 stripped
 Transform:
