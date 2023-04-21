@@ -37,6 +37,9 @@ public class MyPlayerController : MonoBehaviour
 
     private float abilityButtonSpacing = 50f;
     private float abilityButtonSpacingFromBottom = 50f;
+
+    public Transform rightHandTransform;
+    public Transform leftHandTransform;
     
    
     public float turnSpeed; // (look sensitivity, accessed by camera controller)

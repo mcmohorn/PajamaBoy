@@ -1515,6 +1515,14 @@ PrefabInstance:
       propertyPath: summonPrefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8896323812873760282, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 1696965758}
+    - target: {fileID: 8896323812873760282, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 1069704368}
     - target: {fileID: 9183868316211353176, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_Layer
       value: 31
@@ -1559,6 +1567,39 @@ MonoBehaviour:
   castTime: 0
   jumpPowerHorizontal: 7
   jumpPowerVertical: 7
+--- !u!114 &1067186629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76330113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca01585d2276442dbaceb9425b9b2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 121456419abab4728a9a8948e9d86dc3, type: 3}
+  cooldownTime: 3
+  cooldown: 0
+  currentCooldown: 0
+  button: {fileID: 0}
+  actionName: Ability2
+  actionId: 0
+  animatorVariableName: isTossing
+  player: {fileID: 0}
+  playerCanvas: {fileID: 0}
+  castTime: 0
+  muffinPrefab: {fileID: 7721196602010912190, guid: 807c78454e697413384ef497ff8c409b, type: 3}
+  tossTime: 0.5
+  throwForceForward: 10
+  throwForceUp: 10
+  muffinLifetime: 5
+--- !u!4 &1069704368 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4947823677843976661, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
+  m_PrefabInstance: {fileID: 1067186621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1134303433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3899226868302452457, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
@@ -1709,6 +1750,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc1771a7e4dc4ce5b60f3a52ffd953e, type: 3}
+--- !u!4 &1696965758 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4081611578988451908, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
+  m_PrefabInstance: {fileID: 1067186621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1736417705 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1769804906542796978, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
