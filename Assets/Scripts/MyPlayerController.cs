@@ -190,6 +190,7 @@ public class MyPlayerController : MonoBehaviour
         {
             playerVelocity.y = 0f;
             playerVelocity.z = 0f;
+            playerVelocity.x = 0f;
         }
 
         Vector3 move = new Vector3(moveVector.x, 0, moveVector.z);
