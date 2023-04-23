@@ -1281,7 +1281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5857256867688493426, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6174758780806643022, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: m_Layer
@@ -1412,14 +1412,6 @@ PrefabInstance:
       value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 8796847002757578675, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
-      propertyPath: actionId
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8796847002757578675, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
-      propertyPath: actionName
-      value: Ability1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8796847002757578675, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
       propertyPath: inputButtonName
       value: Ability1
       objectReference: {fileID: 0}
@@ -1542,60 +1534,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8896323812873760281, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}
   m_PrefabInstance: {fileID: 1067186621}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1067186623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76330113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d3e23cfdc814344b651f59d57e7017, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 2800000, guid: 6a20c543a6e69498abb24e1edd797099, type: 3}
-  cooldownTime: 3
-  cooldown: 0
-  currentCooldown: 0
-  button: {fileID: 0}
-  actionName: Ability0
-  actionId: 10
-  animatorVariableName: isSuperJumping
-  player: {fileID: 0}
-  playerCanvas: {fileID: 0}
-  castTime: 0
-  jumpPowerHorizontal: 4
-  jumpPowerVertical: 4
-  jumpVector: {x: 0, y: 0, z: 0}
---- !u!114 &1067186629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76330113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ca01585d2276442dbaceb9425b9b2d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 2800000, guid: 121456419abab4728a9a8948e9d86dc3, type: 3}
-  cooldownTime: 3
-  cooldown: 0
-  currentCooldown: 0
-  button: {fileID: 0}
-  actionName: Ability2
-  actionId: 0
-  animatorVariableName: isTossing
-  player: {fileID: 0}
-  playerCanvas: {fileID: 0}
-  castTime: 0
-  muffinPrefab: {fileID: 7721196602010912190, guid: 807c78454e697413384ef497ff8c409b, type: 3}
-  tossTime: 0.5
-  throwForceForward: 100
-  throwForceUp: 100
-  muffinLifetime: 5
 --- !u!4 &1069704368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4947823677843976661, guid: 673a4b2e36017461cb4fff1c5e841045, type: 3}

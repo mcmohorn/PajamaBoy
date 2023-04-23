@@ -9,20 +9,29 @@ public class SuperJumpAbility : Ability
     public float jumpPowerVertical;
 
     public Vector3 jumpVector;
+    private bool isJumping;
 
     void Start()
     {
         jumpVector = new Vector3(0,0,0);
+        isJumping = false;
     }
 
     void Update()
     {
         GetInput();
 
-        Debug.DrawRay(player.transform.position, jumpVector, Color.red);
+        if (player.debugTools) {
+            Debug.DrawRay(player.transform.position, jumpVector, Color.red);
+        }
+
+        if (isJumping && player.controller.isGrounded) {
+            player.animator.SetBool(animatorVariableName, false);
+            isJumping = false;
+        }
 
         if (cooldown > 0) {
-            player.animator.SetBool(animatorVariableName, false);
+            // player.animator.SetBool(animatorVariableName, false);
             cooldown -= Time.deltaTime;
         }
 
@@ -37,12 +46,11 @@ public class SuperJumpAbility : Ability
 
     void BigJump() 
     {
+        isJumping = true;
         jumpVector = player.transform.forward;
         jumpVector.y += jumpPowerVertical;
         jumpVector *= jumpPowerHorizontal;
 
-
-        
         player.playerVelocity += jumpVector;
     }
     

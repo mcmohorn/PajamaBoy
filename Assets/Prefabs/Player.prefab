@@ -379,6 +379,8 @@ GameObject:
   - component: {fileID: 8896323812873760285}
   - component: {fileID: 7395824961831610742}
   - component: {fileID: 8796847002757578675}
+  - component: {fileID: 4687851224441796859}
+  - component: {fileID: 5816437092161074202}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -441,6 +443,8 @@ MonoBehaviour:
   sprintMultiplier: 2
   jumpHeight: 3
   gravityValue: -9.81
+  rightHandTransform: {fileID: 0}
+  leftHandTransform: {fileID: 0}
   turnSpeed: 0.01
   animator: {fileID: 0}
   abilityButtonPrefab: {fileID: 7042108166359216547, guid: efd13f0ecb3ed49078f4b2d9b063c606, type: 3}
@@ -500,18 +504,72 @@ MonoBehaviour:
   cooldown: 0
   currentCooldown: 0
   button: {fileID: 0}
-  inputButtonName: Summon
-  actionId: 8
+  actionName: Ability1
+  actionId: 11
   animatorVariableName: isSummoning
   player: {fileID: 0}
   playerCanvas: {fileID: 0}
-  castTime: 1
+  castTime: 0.9
   summonPrefab: {fileID: 6133371841082773929, guid: 8312fba77102f4fab9e181c298e9227d, type: 3}
   erodeRate: 0.03
   erodeRefreshRate: 0.01
   erodeDelay: 1.25
   speed: 0
   objectToErode: {fileID: 0}
+--- !u!114 &4687851224441796859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896323812873760278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca01585d2276442dbaceb9425b9b2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 121456419abab4728a9a8948e9d86dc3, type: 3}
+  cooldownTime: 3
+  cooldown: 0
+  currentCooldown: 0
+  button: {fileID: 0}
+  actionName: Ability2
+  actionId: 0
+  animatorVariableName: isTossing
+  player: {fileID: 0}
+  playerCanvas: {fileID: 0}
+  castTime: 0
+  muffinPrefab: {fileID: 7721196602010912190, guid: 807c78454e697413384ef497ff8c409b, type: 3}
+  tossTime: 0.5
+  throwForceForward: 100
+  throwForceUp: 100
+  muffinLifetime: 5
+--- !u!114 &5816437092161074202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896323812873760278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3e23cfdc814344b651f59d57e7017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 6a20c543a6e69498abb24e1edd797099, type: 3}
+  cooldownTime: 3
+  cooldown: 0
+  currentCooldown: 0
+  button: {fileID: 0}
+  actionName: Ability0
+  actionId: 10
+  animatorVariableName: isSuperJumping
+  player: {fileID: 0}
+  playerCanvas: {fileID: 0}
+  castTime: 0
+  jumpPowerHorizontal: 4
+  jumpPowerVertical: 4
+  jumpVector: {x: 0, y: 0, z: 0}
 --- !u!1001 &7337353972846689789
 PrefabInstance:
   m_ObjectHideFlags: 0
