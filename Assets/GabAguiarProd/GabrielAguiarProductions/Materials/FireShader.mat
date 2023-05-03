@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: FireShader
   m_Shader: {fileID: -6465566751694194690, guid: c3bf4f0f3e6687b4a8c146ef6539af8e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -17,6 +19,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -68,6 +71,8 @@ Material:
     - VertexOffsetMask_: 0.33
     - VertexOffsetPower_: 0.67
     - VertexOffsetScale_: 5
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
     - Color_: {r: 11.313708, g: 1.6544663, b: 0.48029873, a: 1}
     - Color_b9272b1275cc4515ace8fcddc66cdd72: {r: 9.965379, g: 0.8578288, b: 0.14101925, a: 1}
@@ -88,4 +93,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
+  version: 7
