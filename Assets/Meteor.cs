@@ -13,8 +13,6 @@ public class Meteor : MonoBehaviour
     public ParticleSystem explosionPS;
     public ParticleSystem explosionPS2;
 
-    bool moving = true;
-
     public float delayUntilExplosion;
     public float delayUntilExplosion2;
 
@@ -22,9 +20,11 @@ public class Meteor : MonoBehaviour
 
     public string nextScene;
 
+    public float meteorVelocity;
+
     void Start()
     {
-        dir = new Vector3(0,0,10);
+        dir = new Vector3(0,0,meteorVelocity);
         rb = GetComponent<Rigidbody>();
 
         Invoke("Explode", delayUntilExplosion);
@@ -43,13 +43,13 @@ public class Meteor : MonoBehaviour
     void Explode() 
     {
         explosionPS.Play();
-        Destroy(explosionPS, explosionPS.duration);
+        Destroy(explosionPS, explosionPS.main.duration);
     }
 
     void Explode2() 
     {
         explosionPS2.Play();
-        Destroy(explosionPS2, explosionPS2.duration);
+        Destroy(explosionPS2, explosionPS2.main.duration);
     }
 
     void NextScene()

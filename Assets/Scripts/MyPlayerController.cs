@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 using Rewired;
 
 public class MyPlayerController : MonoBehaviour
@@ -40,6 +41,10 @@ public class MyPlayerController : MonoBehaviour
 
     public Transform rightHandTransform;
     public Transform leftHandTransform;
+
+    // can hide this
+    [HideInInspector]
+    public GameObject interactTarget;
     
    
     public float turnSpeed; // (look sensitivity, accessed by camera controller)
@@ -50,6 +55,7 @@ public class MyPlayerController : MonoBehaviour
     private bool jump;
     private bool sprint;
     private bool start;
+    private bool interact;
 
     private Vector3 moveVector = new Vector3(0,0,0);
     public Player player; // The Rewired Player
@@ -138,6 +144,7 @@ public class MyPlayerController : MonoBehaviour
         taunt = player.GetButtonDown("Taunt");
         sprint = player.GetButton("Sprint");
         start = player.GetButtonDown("Start");
+        interact = player.GetButtonDown("Interact");
         
     }
 
@@ -241,6 +248,22 @@ public class MyPlayerController : MonoBehaviour
             } else {
                 ResumeGame();
             }
+        }
+
+        if (interact && interactTarget) {
+            // interact with targetted object
+
+            if (interactTarget.GetComponent<Spaceship>()) {
+                Debug.Log("get in da spacehsip");
+                interactTarget.GetComponent<Spaceship>().cam.Priority = 1;
+                interactTarget.GetComponent<Spaceship>().player = gameObject;
+                interactTarget.GetComponent<Spaceship>().piloting = true;
+                interactTarget.GetComponent<SpaceshipPickup>().promptCanvas.gameObject.SetActive(false);
+                mainCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
+                gameObject.SetActive(false);
+            }
+
+
         }
 
         

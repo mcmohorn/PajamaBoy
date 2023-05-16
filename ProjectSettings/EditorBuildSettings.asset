@@ -5,10 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Home(Inside).unity
     guid: 88b0c5b2b717d42898acd552ffc34124
   - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: 06f0371d79ec04ffa8e6ad478cb41083
+  - enabled: 1
+    path: Assets/Scenes/Meteor.unity
+    guid: 072c18d259e7f4e469a6e3d2d5af3f8b
+  - enabled: 1
+    path: Assets/Scenes/Home-Inside.unity
+    guid: 9b4c18cd89b984610b2724e36c1d58e8
   m_configObjects: {}

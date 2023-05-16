@@ -5,14 +5,14 @@ using Rewired;
 
 public class CameraController : MonoBehaviour {
 
-    public GameObject player;
+    	public GameObject player;
 
 		private Player rewiredPlayer;
 
 		public float startHeight;
 
 		private float lookSpeed;
-    public float radiusX;
+    	public float radiusX;
 		public float radiusY;
 		float verticalOffset;
 		float horizontalOffset;

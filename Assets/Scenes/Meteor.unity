@@ -530,7 +530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2187610590983609645, guid: 13e499942d7ef4039adb78bfb666f202, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 1.5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187610590983609645, guid: 13e499942d7ef4039adb78bfb666f202, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 4.67
       objectReference: {fileID: 0}
     - target: {fileID: 2187610590983609645, guid: 13e499942d7ef4039adb78bfb666f202, type: 3}
       propertyPath: InitialModule.startSize.minScalar
@@ -547,6 +551,10 @@ PrefabInstance:
     - target: {fileID: 2187610590983609645, guid: 13e499942d7ef4039adb78bfb666f202, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187610590983609645, guid: 13e499942d7ef4039adb78bfb666f202, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5652251418320024592, guid: 13e499942d7ef4039adb78bfb666f202, type: 3}
       propertyPath: m_RootOrder
@@ -967,6 +975,7 @@ MonoBehaviour:
   delayUntilExplosion2: 5.1
   delayUntilNextScene: 7
   nextScene: Home-Inside
+  meteorVelocity: 10
 --- !u!1 &2036511535
 GameObject:
   m_ObjectHideFlags: 0
