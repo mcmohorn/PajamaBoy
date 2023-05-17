@@ -20,10 +20,13 @@ public class MyPlayerController : MonoBehaviour
     [Tooltip("Main menu element")]
     public RectTransform menu;
 
+    public SkinnedMeshRenderer bodyRenderer;
+
     // standard unity characer movement things
     public CharacterController controller;
     public Vector3 playerVelocity;
     private bool groundedPlayer;
+
 
     [Tooltip("How fast the player can move")]
     public float playerSpeed = 4.0f;
@@ -64,6 +67,9 @@ public class MyPlayerController : MonoBehaviour
 
     public Animator animator;
 
+    public bool disabled = false;
+
+
     Vector3 rotationSpeed;
     Vector3 targetVelocity;
     Vector3 newForward = new Vector3(0,0,0);
@@ -73,12 +79,15 @@ public class MyPlayerController : MonoBehaviour
 
     private Ability[] abilities;
 
+    Rigidbody rb;
+
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
         controller.minMoveDistance = 0;  // it was at .001 and jumping wouldn't work
         SetupUI();
         ResumeGame();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void SetupUI()
@@ -124,10 +133,11 @@ public class MyPlayerController : MonoBehaviour
 
     void Update()
     {
-        
-        GetInput();
-        ProcessInput();
-        SetAnimatorValues();
+        if (!disabled) {
+            GetInput();
+            ProcessInput();
+            SetAnimatorValues();
+        }
         
     }
 
@@ -255,12 +265,20 @@ public class MyPlayerController : MonoBehaviour
 
             if (interactTarget.GetComponent<Spaceship>()) {
                 Debug.Log("get in da spacehsip");
-                interactTarget.GetComponent<Spaceship>().cam.Priority = 1;
                 interactTarget.GetComponent<Spaceship>().player = gameObject;
-                interactTarget.GetComponent<Spaceship>().piloting = true;
-                interactTarget.GetComponent<SpaceshipPickup>().promptCanvas.gameObject.SetActive(false);
-                mainCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
-                gameObject.SetActive(false);
+                interactTarget.GetComponent<Spaceship>().Activate();
+                //interactTarget.GetComponent<Spaceship>().cam.Priority = 1;
+                
+                
+                interactTarget.GetComponent<SpaceshipPickup>().promptCanvas.gameObject.SetActive(false); // could move to activate
+                // mainCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
+                disabled = true;
+                mainCanvas.gameObject.SetActive(false);
+                bodyRenderer.enabled = false;
+                SwitchToControlMap("Spaceship");
+                // rb.constraints = RigidbodyConstraints.FreezePosition; // maybe there's a better way to disable rigidbody stuff for now,
+                // could Destroy and add it back
+                //gameObject.SetActive(false);
             }
 
 
@@ -281,6 +299,23 @@ public class MyPlayerController : MonoBehaviour
         Time.timeScale = 1;
         menu.gameObject.SetActive(false);
 
+    }
+
+    public void SwitchToControlMap(string controlMapName)
+    {
+        Debug.Log("switching to " + controlMapName);
+        // Disable all controller maps first for all controllers of all types
+        player.controllers.maps.SetAllMapsEnabled(false);
+
+
+        // The manual way - iterate all Controller Maps in a category and set the state manually
+        foreach(ControllerMap map in player.controllers.maps.GetAllMapsInCategory(controlMapName)) {
+            map.enabled = true; // set the enabled state on the map
+        } 
+        
+
+        // Enable maps for the current game mode for all controlllers of all types
+        //player.controllers.maps.SetMapsEnabled(true, controlMapName);
     }
 
     
