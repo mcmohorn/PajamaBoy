@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour {
 		float verticalOffset;
 		float horizontalOffset;
 
+		public Vector3 targetOffset;
+
 
 
 		Vector3 origin;
@@ -52,7 +54,7 @@ void GetInput()
 
 		transform.position =  new Vector3(origin.x + radiusX*Mathf.Sin(horizontalOffset), origin.y + verticalOffset, origin.z - radiusX*Mathf.Cos(horizontalOffset));
 
-		transform.LookAt(player.transform.position + player.transform.up);
+		transform.LookAt(player.transform.position + targetOffset);
 
 	}
 }

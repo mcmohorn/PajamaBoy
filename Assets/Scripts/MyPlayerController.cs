@@ -67,7 +67,7 @@ public class MyPlayerController : MonoBehaviour
 
     public Animator animator;
 
-    public bool disabled = false;
+    public bool disabled = false; // coi;d 
 
 
     Vector3 rotationSpeed;
@@ -96,13 +96,29 @@ public class MyPlayerController : MonoBehaviour
         abilities = gameObject.GetComponents<Ability>();
         Debug.Log("instantiating " + abilities.Length + " abilities");
 
+        // float abw = Screen.Width *0.04f;
+
         // instantiate AbilityButton prefabs in the players canvas
         for (int index = 0; index < abilities.Length; index++)
         {
             var ability = abilities[index];
             ability.player = gameObject.GetComponent<MyPlayerController>();
             GameObject abilityButton = Instantiate(abilityButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+    
+
             var abilityButtonWidth = abilityButton.GetComponent<RectTransform>().sizeDelta.x;
+
+            Debug.Log("ability buttons have width"+ abilityButtonWidth);
+
+            var targetWidth = Screen.width * 0.037f;
+
+            float scaleFactor = targetWidth/abilityButtonWidth * 1.0f;
+            
+            // abilityButton.GetComponent<RectTransform>().localScale = new Vector3(scaleFactor, scaleFactor, 1);
+            Debug.Log("ability want to have: "+ targetWidth);
+            Debug.Log("scale should be : "+ scaleFactor);
+            Debug.Log("screen width : "+ Screen.width);
+
             Vector3 offset = new Vector3((abilityButtonWidth + abilityButtonSpacing) * -1.0f*index, abilityButtonSpacingFromBottom, 0);
             abilityButton.GetComponent<RectTransform>().localPosition += offset;
             abilityButton.transform.SetParent (mainCanvas.transform, false);
