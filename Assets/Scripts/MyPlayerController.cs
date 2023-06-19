@@ -280,9 +280,10 @@ public class MyPlayerController : MonoBehaviour
             // interact with targetted object
 
             if (interactTarget.GetComponent<Spaceship>()) {
-                Debug.Log("get in da spacehsip");
                 interactTarget.GetComponent<Spaceship>().player = gameObject;
                 interactTarget.GetComponent<Spaceship>().Activate();
+                interactTarget.GetComponent<Spaceship>().interactionCollider.enabled = false;
+
                 //interactTarget.GetComponent<Spaceship>().cam.Priority = 1;
                 
                 

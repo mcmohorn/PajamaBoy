@@ -7,11 +7,14 @@ public class Bullet : MonoBehaviour
     [Tooltip("Speed of the bullet")]
     public float speed;
 
-    [Tooltip("Number of seconds until bullet disappears on its own")]
+    [Tooltip("Seconds until bullet disappears on its own")]
     public float maxLifetime;
 
     [Tooltip("Damage on impact with something with health")]
     public float damage;
+
+    [Tooltip("Heat cost per bullet ")]
+    public float heat;
     // Start is called before the first frame update
     void Start()
     {
