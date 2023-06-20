@@ -35,9 +35,11 @@ public class Spaceship : MonoBehaviour
     public float heatCooldownTime;
     float timeUntilCooling = 0f;
     float heat = 0f;
+    public Gradient heatGradient;
     public GameObject bulletPrefab;
 
     public Image heatFillImage;
+    public Image heatOutlineImage;
 
     public float thrustPower;
     public float lookPower;
@@ -91,6 +93,8 @@ public class Spaceship : MonoBehaviour
         }
 
         heatFillImage.fillAmount = heat / maxHeat;
+        heatFillImage.color = heatGradient.Evaluate(heat/maxHeat);
+        heatOutlineImage.color = heatGradient.Evaluate(heat/maxHeat);
         
     }
 

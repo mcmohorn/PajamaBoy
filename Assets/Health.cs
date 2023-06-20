@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public float maxHealth;
     float health;
     public int team;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +19,18 @@ public class Health : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+
+    public void TakeDamage(float amt) 
+    {
+        // health -= amt;
+
+
+
+        if(health <= 0) {
+
+        }
     }
 }

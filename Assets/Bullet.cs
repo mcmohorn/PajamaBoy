@@ -30,7 +30,14 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        Debug.Log("Bullet hit "+ other.gameObject.name);
+        
+
+        if (other.gameObject.GetComponent<Health>()) {
+            Debug.Log("Bullet hit something with health "+ other.gameObject.name);
+            // take damage 
+        } else {
+            Debug.Log("Bullet hit something without health"+ other.gameObject.name);
+        }
 
         // take health from target game object
         Destroy(gameObject);
